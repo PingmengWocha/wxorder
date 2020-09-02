@@ -1,0 +1,63 @@
+<view class="root">
+  <view class="background">
+    <view class="background_top"></view>
+  </view>
+  <view class="content">
+    <view class="content_top">
+      <view class="avatar">
+        <image class="avatar_img" src="http://img0.imgtn.bdimg.com/it/u=2766255690,1088478936&fm=26&gp=0.jpg" mode='aspectFill'></image>
+      </view>
+      <view class="content_text">
+        <view class="name">庖丁|点菜专员</view>
+        <view class="phonenum">15355446677</view>
+      </view>
+    </view>
+
+    <view class="client">
+      <view class="client_left">
+        <image class="icon" src="/images/my/icon_zhexian.png"></image>
+        <view class="client_text">我的客户</view>
+      </view>
+      <view class="client_right">
+        <image class="gotoimg" src="/images/my/goto.png"></image>
+      </view>
+    </view>
+
+    <view class="info">
+      <view class="info_top">
+        <image class="icon" src="/images/my/icon_tongji.png"></image>
+        <view class="text">状态:</view>
+        <view class="status">正式</view>
+      </view>
+      <view class="info_bottom">
+        <view class="bottom_text">
+          <view class="time">入职时间</view>
+          <view class="date">2020-05-12</view>
+        </view>
+        <view class="bottom_text">
+          <view class="time">转正时间</view>
+          <view class="date">2020-05-12</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="client">
+      <view class="client_left">
+        <image class="icon" src="/images/my/icon_password.png"></image>
+        <view class="client_text">修改密码</view>
+      </view>
+      <view class="client_right">
+        <image class="gotoimg" src="/images/my/goto.png"></image>
+      </view>
+    </view>
+
+    <view class="client">
+      <view class="client_left">
+        <image class="icon" src="/images/my/icon_out.png"></image>
+        <view class="client_text">退出账号</view>
+      </view>
+      <view class="client_right">
+      </view>
+    </view>
+  </view>
+</view>

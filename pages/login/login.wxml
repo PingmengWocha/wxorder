@@ -1,0 +1,26 @@
+<view class="root">
+  <view class="out">
+    <view class="content_img">
+      <image class="top_img" src="http://ms.bdimg.com/pacific/1963015779.jpg"></image>
+    </view>
+    <view class="text">
+      <view class="phone">
+        <view class="content">
+          <view class="left_phone">手机号</view>
+          <input class="right_phone" type="number" placeholder="请输入您的手机号" bindinput="phoneTf" maxlength="11"></input>
+        </view>
+        <view class="line"></view>
+      </view>
+      <view class="phone">
+        <view class="content">
+          <view class="left_phone"> 密码</view>
+          <input class="right_phone" placeholder="请输入您的密码" bindinput="passwordTf" maxlength="11"></input>
+        </view>
+        <view class="line"></view>
+      </view>
+    </view>
+    <view class="bottm">
+      <view class="btn" bindtap="goto">登录</view>
+    </view>
+  </view>
+</view>
