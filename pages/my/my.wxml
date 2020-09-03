@@ -5,7 +5,7 @@
   <view class="content">
     <view class="content_top">
       <view class="avatar">
-        <image class="avatar_img" src="http://img0.imgtn.bdimg.com/it/u=2766255690,1088478936&fm=26&gp=0.jpg" mode='aspectFill'></image>
+        <image class="avatar_img" src="http://img0.imgtn.bdimg.com/it/u=2766255690,1088478936&fm=26&gp=0.jpg" mode='aspectFill' bindtap="avatar"></image>
       </view>
       <view class="content_text">
         <view class="name">庖丁|点菜专员</view>
@@ -41,7 +41,7 @@
       </view>
     </view>
 
-    <view class="client">
+    <view class="client" bindtap="changepassword">
       <view class="client_left">
         <image class="icon" src="/images/my/icon_password.png"></image>
         <view class="client_text">修改密码</view>

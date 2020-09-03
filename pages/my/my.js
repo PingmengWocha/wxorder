@@ -8,6 +8,19 @@ Page({
 
   },
 
+  //点击头像
+  avatar() {
+    console.log('点击了')
+  },
+
+
+  //改变密码
+  changepassword(e) {
+    wx.navigateTo({
+      url: '/pages/my/password/password',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -40,20 +53,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
 
   },
 

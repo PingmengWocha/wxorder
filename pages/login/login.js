@@ -11,15 +11,46 @@ Page({
 
   //手机号输出
   phoneTf: function(e) {
-    phone = e.detail.value
+    this.data.phone = e.detail.value
   },
 
   //密码输入
   passwordTf: function(e) {
-    password = e.detail.value
+    this.data.password = e.detail.value
   },
 
   goto() {
+    let that = this
+    if(this.data.phone != null && this.data.phone.length > 0) {
+      if(!that.telFun(that.data.phone)){
+        wx.showToast({
+          title: '请输入正确的手机号',
+          icon: 'none',
+          duration: 2000
+        })
+        return;
+      }else {
+        console.log(that.data.password.length)
+        if(that.data.password == null || that.data.password.length <= 0) {
+          wx.showToast({
+            title: '请输密码',
+            icon: 'none',
+            duration: 2000
+          })
+          return
+        }else {
+          //网络请求
+
+        }
+      }
+    }else {
+      wx.showToast({
+        title: '手机号不能为空',
+        icon: 'none',
+        duration: 2000
+      })
+      return
+    }
     wx.switchTab({
       url: '/pages/index/index',
     })
@@ -62,23 +93,28 @@ Page({
   },
 
   /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
 
+  },
+
+  //手机号正则判断
+  telFun(tels){
+    var myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
+    if (!myreg.test(tels)) {
+      return false;
+    } else {
+      return true;
+    }
+  },
+
+  checkFun($poneInput) {
+    var myreg = /^\d{6}$/;
+    if (!myreg.test($poneInput)) {
+      return false;
+    } else {
+      return true;
+    }
   }
 })

@@ -2,7 +2,11 @@
   "enablePullDownRefresh": true,
   "backgroundTextStyle": "dark",
   "navigationBarBackgroundColor": "#fff",
-  "navigationBarTitleText": "Demo",
+  "navigationBarTitleText": "首页",
   "navigationBarTextStyle": "black",
-  "usingComponents": {}
+  "usingComponents": {
+    "wux-cell-group": "../../conponents/cell-group/index",
+    "wux-cell": "../../conponents/cell/index",
+    "wux-rater": "../../conponents/rater/index"
+  }
 }

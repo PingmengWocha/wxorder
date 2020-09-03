@@ -14,7 +14,7 @@
       <view class="phone">
         <view class="content">
           <view class="left_phone"> 密码</view>
-          <input class="right_phone" placeholder="请输入您的密码" bindinput="passwordTf" maxlength="11"></input>
+          <input class="right_phone" placeholder="请输入您的密码" bindinput="passwordTf" maxlength="16" password="true"></input>
         </view>
         <view class="line"></view>
       </view>
