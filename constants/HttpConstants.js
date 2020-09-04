@@ -9,5 +9,6 @@ const userinfo = "test";
 const examineUrl = "https://testMedicineOnline.ureading.com/medicine-quiz/#/bank" //测试服
 
 module.exports = {
-  test: apiRootUrl + 'user/test',
+  // test: apiRootUrl + 'user/test',
+  test: 'http://yeweimf.vicp.net/face/realTime'
 }

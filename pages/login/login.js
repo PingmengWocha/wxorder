@@ -1,4 +1,6 @@
 // pages/login/login.js
+const apiUtil = require('../../utils/ApiUtil')
+const api = require('../../constants/HttpConstants')
 Page({
 
   /**
@@ -61,7 +63,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // this.test()
   },
 
   /**
@@ -116,5 +118,17 @@ Page({
     } else {
       return true;
     }
+  },
+
+  test(){
+    let that = this
+    let data = {}
+    apiUtil.request(api.test,data).then(res => {
+      console.log('走了')
+      console.log(res)
+      if(res.code == 0) {
+        console.log(res)
+      }
+    })
   }
 })

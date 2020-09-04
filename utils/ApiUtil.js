@@ -20,16 +20,75 @@ const api = require('../constants/HttpConstants.js');
      var openId = wx.getStorageSync('openId')
      var temp;
      if(userInfo == "") {
-      //  console.log("userInfo是空")
        temp = {
         "timestamp": timestamp,
-        "openId": openId,
-        "userId": ((userId == "") ? 0 : userId),
-        "userToken": userToken,
         "body": {}
        }
+      temp["body"] = data;
+      var jsonstr = JSON.stringify(temp)
+      wx.request({
+        url: url,
+        data: {
+          params: jsonstr
+        },
+        method: method,
+        header: {
+          // 'Authorization': 'userToken',
+          'Content-Type': 'application/json;charset=UTF-8',
+        },
+        success: function(res) {
+          console.log('请求地址:' + url)
+          console.log('请求参数:')
+          console.log(temp)
+          console.log('返回数据:')
+          if(res.statusCode == 200) {
+            if(res.data.code == 200) {
+              resolve(res.data)
+            }else if(res.data.code == 200001) {
+              //用户token过期
+              wx.hideLoading()
+              wx.showToast({
+                title: res.data.msg,
+              })
+              //跳转授权页面
+            }else {
+              wx.hideLoading()
+              wx.showModal({
+                title: '提示',
+                content: res.data.msg,
+                showCancel: false,
+                success: function(res) {}
+              })
+              reject(res.data.code)
+            }
+          }else {
+            wx.hideLoading()
+            wx.showModal({
+              title: '提示',
+              content: '网络异常',
+              showCancel: false,
+              success: function(res) {}
+            })
+          }
+        },
+        fail: function(err) {
+          console.log('请求地址:' + url)
+          console.log('请求参数:')
+          console.log(temp)
+          console.log('错误信息' + err)
+          wx.hideLoading()
+          wx.showModal({
+            title: '提示',
+            content: '网络请求超时!',
+            showCancel: false,
+            success: function(res) {}
+          })
+          console.log("err",err)
+          reject(err)
+        }
+      })
+       
      }else {
-       //console.log("userinfo不是空")
        temp = {
         "timestamp": timestamp,
         "openId": openId,
@@ -46,8 +105,8 @@ const api = require('../constants/HttpConstants.js');
         },
         method: method,
         header: {
-          'Authorization': 'userToken',
-          'Content-Type': 'application/x-www-form-urlencoded',
+          // 'Authorization': 'userToken',
+          'Content-Type': 'application/json;charset=UTF-8',
         },
         success: function(res) {
           console.log('请求地址:' + url)
