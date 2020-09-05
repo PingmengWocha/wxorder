@@ -1,10 +1,22 @@
 <view class="root">
-  <view class="top-content">
-    <scroll-view x-scroll="{{true}}" class="avatar-item" scroll-left="{{navScrollLeft}}" scroll-with-animation="{{true}}">
-      <view class="avatar-out">
-        <image class="avatar" src="http://img2.imgtn.bdimg.com/it/u=1424373188,297799872&fm=26&gp=0.jpg"></image>
-        <view class="text">我吃过</view>
-      </view>
+  <view class="top-search" hidden="{{hideSearch}}">
+    <view class="search-out">
+      <image class="icon-search" src="../../images/other/search.png"></image>
+      <input class="searchinput" placeholder="请输入搜索名称"></input>
+      <!-- <image class="icon-delete" hidden="{{isShow}}" bindtap="deleteClick"></image> -->
+    </view>
+  </view>
+  <view class="top-content" hidden="{{!hideSearch}}">
+    <scroll-view scroll-x="{{true}}" class="avatar-item" scroll-with-animation="{{true}}">
+      <block wx:for="{{clientItems}}" wx:key="id" wx:for-item="item">
+        <view class="avatar-out">
+          <view class="fixscroll">
+            <image class="avatar" src="{{item.url}}"></image>
+            <view class="text" wx:if="{{item.haveHis}}" bindtap="history">我吃过</view>
+            <view class="text" wx:if="{{!item.haveHis}}"></view>
+          </view>
+        </view>
+      </block>
     </scroll-view>
     <view class="input-item">
       <view class="input-out">
@@ -35,27 +47,54 @@
       </view>
     </view>
     <view class="order-item">
-      <scroll-view y-scroll="{{true}}" class="sorder-item">
-        <view class="item">
-          <image class="left-img" src="http://img3.imgtn.bdimg.com/it/u=2710306391,904435642&fm=26&gp=0.jpg"/>
+      <scroll-view scroll-y="{{true}}" class="sorder-item">
+        <view class="item" wx:for="{{produceItems}}" wx:key="id" wx:for-item="item" wx:for-index="idx">
+          <image class="left-img" src="{{item.url}}"/>
           <view class="name-out">
-            <view class="name">酸菜鱼</view>
+            <view class="name">{{item.name}}</view>
           </view>
           <view class="details">
             <view class="price-out">
-              <view class="price">15.0</view>
+              <view class="price">{{item.price}}</view>
             </view>
             <view class="details-other">
               <view class="plus-out">
                 <view class="plus">+</view>
               </view>
               <view class="other-out">
-                <view class="other">详情</view>
+                <view class="other" bindtap="detailClick" data-index="{{idx}}">详情</view>
               </view>
             </view>
           </view>
         </view>
       </scroll-view>
+    </view>
+  </view>
+
+  <!-- 用户历史弹窗 -->
+  <view class="dialog-content-out" wx:if="{{canShow}}" bindtap="miss">
+    <view class="dialog-content" catchtap>
+      <view class="top-like">
+        <scroll-view class="stop-like" scroll-y="{{true}}">
+          <view class="like-text">客人喜好：辣的，多放香菜辣的</view>
+        </scroll-view>
+      </view>
+      <view class="center-time">
+        <view class="time-text">上次进店</view>
+        <view class="time">2020-09-12 12:30:09</view>
+      </view>
+      <view class="produce-list">
+        <scroll-view class="sitem" scroll-y="{{true}}">
+          <view class="like-item" wx:for="{{produceItems}}" wx:key="id" wx:for-item="item" >
+            <view class="produce-img-out">
+              <image class="produce-img" src="{{item.url}}"></image>
+            </view>
+            <view class="produce-name-out">
+              <view class="produce-name">{{item.name}}</view>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
     </view>
   </view>
 </view>

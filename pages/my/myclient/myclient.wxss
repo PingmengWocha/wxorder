@@ -1,0 +1,121 @@
+page {
+  width: 100%;
+  height: 100%;
+}
+
+.root {
+  width: 100%;
+  height: 100%;
+  padding-top: 70rpx;
+  background: #F2F4F5;
+  /* margin-bottom: 30rpx; */
+}
+
+.top-bar {
+  width: 100%;
+  height: 50rpx;
+  padding-top: 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background: white;
+  /* background: rgba(0, 0, 0, 0); */
+  z-index: 1;
+  position: fixed;
+  top: 0rpx;
+  border-top: 2rpx #F2F4F5 solid;
+}
+
+.bar-item-out {
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+}
+
+.bar-item {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  font-size: 28rpx;
+}
+
+.content-item {
+  width: 100%;
+  height: 95%;
+  /* padding-top: 10rpx; */
+  /* margin-top: 80rpx; */
+  /* background: #F2F4F5; */
+  /* background: red; */
+  border-top: 2rpx #F2F4F5 solid;
+  overflow: hidden;
+  /* padding-bottom: 30rpx; */
+}
+
+.item-out{
+  height: 120rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 10rpx;
+  padding-top: 10rpx;
+}
+
+.item {
+  height: 100%;
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background: white;
+}
+
+.avatar-out {
+  flex: 1;
+  height: 100%;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+}
+
+.dishes {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dishes-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.time {
+  flex: 1;
+  height: 100%;
+}
+
+.like {
+  flex: 1;
+  height: 100%;
+}
+
+.slike {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+

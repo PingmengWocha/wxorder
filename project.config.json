@@ -23,8 +23,10 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"useCompilerModule": false,
-		"userConfirmedUseCompilerModuleSwitch": false
+		"useIsolateContext": true,
+		"useCompilerModule": true,
+		"userConfirmedUseCompilerModuleSwitch": false,
+		"compileHotReLoad": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.12.2",
@@ -92,6 +94,13 @@
 					"id": -1,
 					"name": "pages/produce/produce",
 					"pathName": "pages/produce/produce",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/myclient/myclient",
+					"pathName": "pages/my/myclient/myclient",
 					"scene": null
 				}
 			]

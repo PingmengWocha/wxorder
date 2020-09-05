@@ -1,0 +1,40 @@
+<view class="root" style="height: {{itemHeight}}px">
+  <view class="top-bar" id="bar">
+    <view class="bar-item-out">
+      <view class="bar-item">
+        <view class="text">头像</view>
+      </view>
+      <view class="bar-item">
+        <view class="text">口味</view>
+      </view>
+      <view class="bar-item">
+        <view class="text">上次进店</view>
+      </view>
+      <view class="bar-item">
+        <view class="text">喜好</view>
+      </view>
+    </view>
+  </view>
+  <scroll-view class="content-item"  scroll-y="{{true}}">
+    <view class="item-out" wx:for="{{clientItems}}" wx:key='id' wx:for-item='item'>
+      <view class="item">
+        <view class="avatar-out">
+          <image class="avatar" src="{{item.url}}"/>
+        </view>
+        <view class="dishes">
+          <view class="dishes-text">{{item.dishes}}</view>
+        </view>
+        <view class="dishes">
+          <view class="dishes-text">{{item.time}}</view>
+        </view>
+        <view class="like">
+          <scroll-view class="slike" scroll-y="{{true}}">
+            <block wx:for="{{item.like}}" wx:key="index" wx:for-item="list">
+              <view class="dishes-text">{{list.name}}</view>
+            </block>
+          </scroll-view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

@@ -13,7 +13,7 @@
       </view>
     </view>
 
-    <view class="client">
+    <view class="client" bindtap="myClient">
       <view class="client_left">
         <image class="icon" src="/images/my/icon_zhexian.png"></image>
         <view class="client_text">我的客户</view>
@@ -51,7 +51,7 @@
       </view>
     </view>
 
-    <view class="client">
+    <view class="client" bindtap="loginout">
       <view class="client_left">
         <image class="icon" src="/images/my/icon_out.png"></image>
         <view class="client_text">退出账号</view>

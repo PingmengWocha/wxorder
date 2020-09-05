@@ -6,7 +6,8 @@
     "pages/produce/produce",
     "pages/my/my",
     "pages/buycar/buycar",
-    "pages/my/password/password"
+    "pages/my/password/password",
+    "pages/my/myclient/myclient"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -13,11 +13,27 @@ Page({
     console.log('点击了')
   },
 
+  //我的客户
+  myClient() {
+    wx.navigateTo({
+      url: './myclient/myclient',
+    })
+  },
+
 
   //改变密码
   changepassword(e) {
     wx.navigateTo({
       url: '/pages/my/password/password',
+    })
+  },
+
+  //登出
+  loginout() {
+    //清除缓存
+    //跳转到登录页面
+    wx.navigateTo({
+      url: '/pages/login/login',
     })
   },
 
