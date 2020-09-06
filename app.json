@@ -7,7 +7,9 @@
     "pages/my/my",
     "pages/buycar/buycar",
     "pages/my/password/password",
-    "pages/my/myclient/myclient"
+    "pages/my/myclient/myclient",
+    "pages/produce/ambitus/ambitus",
+    "pages/produce/reference/reference"
   ],
   "window": {
     "backgroundTextStyle": "light",

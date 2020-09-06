@@ -1,18 +1,11 @@
 <view class="root" style="height: {{itemHeight}}px">
   <view class="top-bar" id="bar">
     <view class="bar-item-out">
-      <view class="bar-item">
-        <view class="text">头像</view>
-      </view>
-      <view class="bar-item">
-        <view class="text">口味</view>
-      </view>
-      <view class="bar-item">
-        <view class="text">上次进店</view>
-      </view>
-      <view class="bar-item">
-        <view class="text">喜好</view>
-      </view>
+      <block wx:for="{{topbarItems}}" wx:key="index" wx:for-item="item">
+        <view class="bar-item">
+          <view class="text">{{item.name}}</view>
+        </view>
+      </block>
     </view>
   </view>
   <scroll-view class="content-item"  scroll-y="{{true}}">

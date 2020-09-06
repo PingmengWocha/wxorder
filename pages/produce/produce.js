@@ -79,6 +79,119 @@ Page({
     ],
     hideSearch: true, //控制搜索框显示和客户历史显示(互斥关系)
     canShow: false, //控制用户喜好弹框显示
+    type: 1, //控制餐饮(0)，房产(1)，家居页面(2)显示
+    checkboxItems: [
+      {
+        id: 0,
+        url: 'http://fc1tn.baidu.com/it/u=2611045465,441782941&fm=202&src=765&crossm&mola=new&crop=v1',
+        details: [
+          {
+            name: '朝向',
+            info: '南'
+          },
+          {
+            name: '建面',
+            info: '75m'
+          }
+        ],
+        goodinfo: '优势描述：1、入户玄关柜设计轻松收纳鞋帽包裹2、L型厨房房间'
+      },
+      {
+        id: 1,
+        url: 'http://fc1tn.baidu.com/it/u=2611045465,441782941&fm=202&src=765&crossm&mola=new&crop=v1',
+        details: [
+          {
+            name: '朝向',
+            info: '南'
+          },
+          {
+            name: '建面',
+            info: '75m'
+          }
+        ],
+        goodinfo: '优势描述：1、入户玄关柜设计轻松收纳鞋帽包裹2、L型厨房房间'
+      },
+      {
+        id: 2,
+        url: 'http://fc1tn.baidu.com/it/u=2611045465,441782941&fm=202&src=765&crossm&mola=new&crop=v1',
+        details: [
+          {
+            name: '朝向',
+            info: '南'
+          },
+          {
+            name: '建面',
+            info: '75m'
+          },
+        ],
+        goodinfo: '优势描述：1、入户玄关柜设计轻松收纳鞋帽包裹2、L型厨房房间'
+      },
+      {
+        id: 3,
+        url: 'http://fc1tn.baidu.com/it/u=2611045465,441782941&fm=202&src=765&crossm&mola=new&crop=v1',
+        details: [
+          {
+            name: '朝向',
+            info: '南'
+          },
+          {
+            name: '建面',
+            info: '75m'
+          },
+        ],
+        goodinfo: '优势描述：1、入户玄关柜设计轻松收纳鞋帽包裹2、L型厨房房间'
+      },
+      {
+        id: 4,
+        url: 'http://fc1tn.baidu.com/it/u=2611045465,441782941&fm=202&src=765&crossm&mola=new&crop=v1',
+        details: [
+          {
+            name: '朝向',
+            info: '南'
+          },
+          {
+            name: '建面',
+            info: '75m'
+          },
+        ],
+        goodinfo: '优势描述：1、入户玄关柜设计轻松收纳鞋帽包裹2、L型厨房房间2、L型厨房房间2、L型厨房房间2、L型厨房房间2、L型厨房房间2、L型厨房房间2、L型厨房房间'
+      }
+    ], //房产item列表
+  },
+
+  //房地产选择框点击事件
+  checkboxChange(e) {
+    // console.log(e)
+    let checked = e.detail.value
+    let checkboxItems = this.data.checkboxItems
+    for(let i = 0; i < checkboxItems.length; i++) {
+      let id = String(this.data.checkboxItems[i].id)
+      if(checked.indexOf(id) !== -1) {
+        checkboxItems[i].checked = true
+        this.setData({
+          checkboxItems: checkboxItems
+        })
+      }else {
+        checkboxItems[i].checked = false
+        this.setData({
+          checkboxItems: checkboxItems
+        })
+      }
+    }
+  },
+
+  //点击查看房产详情
+  houseInfo(e) {
+    wx.navigateTo({
+      url: './ambitus/ambitus',
+    })
+  },
+
+  //点击房贷参考
+  reference(e) {
+    wx.navigateTo({
+      url: './reference/reference',
+    })
   },
 
   //菜品详情点击事件

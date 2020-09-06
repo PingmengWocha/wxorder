@@ -1,4 +1,5 @@
-<view class="root">
+<!-- 餐饮页面 -->
+<view class="root" wx:if="{{type == 0}}">
   <view class="top-search" hidden="{{hideSearch}}">
     <view class="search-out">
       <image class="icon-search" src="../../images/other/search.png"></image>
@@ -95,6 +96,62 @@
           </view>
         </scroll-view>
       </view>
+    </view>
+  </view>
+</view>
+
+<!-- 房地产代码 -->
+<view class="house-root" wx:if="{{type == 1}}">
+  <view class="house-top-content-out">
+    <view class="house-top-content">
+      <view class="house-avatar-out">
+        <image class="house-avatar" src="http://img2.imgtn.bdimg.com/it/u=1424373188,297799872&fm=26&gp=0.jpg"/>
+      </view>
+      <view class="house-his-out">
+        <view class="house-his">我看过</view>
+      </view>
+    </view>
+  </view>
+  <view class="house-content">
+    <scroll-view scroll-y="{{true}}" class="shouse-content">
+      <checkbox-group class="group" bindchange="checkboxChange">
+        <view class="outlabel" wx:for="{{checkboxItems}}" wx:key="id" wx:for-index="idx">
+          <label class="label">
+            <checkbox hidden value="{{item.id}}" checked="{{item.checked}}"></checkbox>
+            <view class="label_icon">
+              <view class="label_icon-checked" style="opacity:{{item.checked ? 1 : 0}}"></view>
+            </view>
+            <view class="house-item" catchtap="houseInfo">
+              <view class="house-top-item">
+                <scroll-view class="house-left-img-out" scroll-y="{{true}}">
+                  <image class="house-left-img" src="{{item.url}}" mode="widthFix aspectFit"/>
+                </scroll-view>
+                <scroll-view class="house-right-out" scroll-y="{{true}}">
+                  <view class="house-text-items">
+                    <view class="house-name">朝向：</view>
+                    <view class="house-value">南</view>
+                  </view>
+                </scroll-view>
+              </view>
+              <view class="house-bottom-info-out">
+                <scroll-view class="shouse-bottom-info" scroll-y="{{true}}">
+                  <view class="house-bottom-info">
+                    {{item.goodinfo}}
+                  </view>
+                </scroll-view>
+              </view>
+            </view>
+          </label>
+        </view>
+      </checkbox-group>
+    </scroll-view>
+  </view>
+  <view class="house-bottom-btns">
+    <view class="left-bottom-btn">
+      <view class="left-btn" bindtap="reference">房贷参考</view>
+    </view>
+    <view class="left-bottom-btn">
+      <view class="left-btn">对比</view>
     </view>
   </view>
 </view>

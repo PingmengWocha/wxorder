@@ -1,0 +1,64 @@
+<view class="root" bindtap="miss">
+  <view class="top-radio">
+    <view class="top-tip">贷款类型:</view>
+    <view class="top-options">
+      <radio-group class="group" bindchange="radioChange">
+        <block wx:for="{{optionItems}}" wx:key='id' wx:for-item="item">
+          <view class="outlabel">
+            <label class="radio">
+              <radio value="{{item.id}}" hidden checked="true"></radio>
+              <view class="label_icon {{item.checked ? 'active' : ''}}">
+                <view class="label_icon_checked" style="opacity:{{item.checked ? 1 : 0}}"></view>
+              </view>
+              <view class="option-text">{{item.name}}</view>
+            </label>
+          </view>
+        </block>
+      </radio-group>
+    </view>
+  </view>
+  <view class="count-content">
+    <view class="count-top">
+      计算方式:
+    </view>
+    <view class="parameter-item">
+      <view class="parameter-radio">
+        <view class="label_icon active">
+          <view class="label_icon_checked"></view>
+        </view>
+        <view class="option-text">根据面积、单价计算</view>
+      </view>
+      <view class="price">
+        <view class="input-out">
+          <view class="price-text">单价</view>
+          <input class="price-input" value="25000" ></input>
+        </view>
+        <view class="right-text">元/平方米</view>
+      </view>
+      <view class="price">
+        <view class="input-out">
+          <view class="price-text">面积</view>
+          <input class="price-input" value="150" ></input>
+        </view>
+        <view class="right-text">平方米</view>
+      </view>
+      <view class="ratio-content">
+        <view class="ration-text">按揭成数:</view>
+        <view class="select">
+          <view class="select-box-out" catchtap="selectClick">
+            <view class="select-option">{{ration}}</view>
+            <view class="icon-select-out">
+              <image class="icon-select" src="/images/other/icon_down.png"/>
+            </view>
+          </view>
+          <!-- 下拉选择框 -->
+          <view class="select-box" hidden="{{hideSelect}}">
+            <block wx:for="{{selectItems}}" wx:key="index" wx:for-item="item" wx:for-index="idx">
+              <view class="select-option" hover-class="background: #1296db; color: #FFFFFF" catchtap="selectbox" data-index="{{idx}}">{{item.option}}</view>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

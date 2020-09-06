@@ -1,0 +1,13 @@
+<view class="content-item">
+  <block wx:for="{{infoItems}}" wx:key="index" wx:for-item="item">
+    <view class="item">
+      <view class="item-top">{{item.tip}}</view>
+      <block wx:for='{{item.imgItem}}' wx:key="index" wx:for-item="list">
+        <view class="img-out" style="height: {{imageHeight}}px">
+          <image class="img" style="height: {{imageHeight}}px" src="{{list.url}}"/>
+        </view>
+      </block>
+    </view>
+  </block>
+</view>
+

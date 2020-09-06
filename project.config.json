@@ -18,15 +18,15 @@
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
+		"compileHotReLoad": false,
 		"babelSetting": {
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
-		"useCompilerModule": true,
-		"userConfirmedUseCompilerModuleSwitch": false,
-		"compileHotReLoad": false
+		"useCompilerModule": false,
+		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.12.2",
@@ -101,6 +101,20 @@
 					"id": -1,
 					"name": "pages/my/myclient/myclient",
 					"pathName": "pages/my/myclient/myclient",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/produce/ambitus/ambitus",
+					"pathName": "pages/produce/ambitus/ambitus",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/produce/reference/reference",
+					"pathName": "pages/produce/reference/reference",
 					"scene": null
 				}
 			]

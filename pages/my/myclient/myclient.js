@@ -6,6 +6,20 @@ Page({
    */
   data: {
     statusBarHeight: 0, //状态类高度
+    topbarItems: [
+      {
+        name: '头像'
+      },
+      {
+        name: '口味'
+      },
+      {
+        name: '上次进店'
+      },
+      {
+        name: '喜好'
+      }
+    ],
     clientItems: [
       {
         id: 1,
