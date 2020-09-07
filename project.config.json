@@ -115,6 +115,13 @@
 					"id": -1,
 					"name": "pages/produce/reference/reference",
 					"pathName": "pages/produce/reference/reference",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/produce/detail/detail",
+					"pathName": "pages/produce/detail/detail",
 					"scene": null
 				}
 			]

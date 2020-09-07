@@ -13,13 +13,14 @@ page {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 10rpx;
+  padding-top: 10rpx;
+  padding-bottom: 20rpx;
   border-bottom: 4rpx #F2F4F5 solid;
 }
 
 .top-tip {
   margin-left: 20rpx;
-  font-size: 28rpx;
+  font-size: 32rpx;
 }
 
 .top-options {
@@ -70,19 +71,20 @@ page {
 
 .option-text {
   margin-left: 10rpx;
-  font-size: 24rpx;
+  font-size: 28rpx;
 }
 
 .count-content {
   width: 100%;
   border-bottom: 4rpx #F2F4F5 solid;
   padding-bottom: 20rpx;
+  padding-top: 20rpx;
 }
 
 .count-top {
-  font-size: 28rpx;
+  font-size: 32rpx;
   padding-top: 10rpx;
-  padding-left: 10rpx;
+  padding-left: 20rpx;
 }
 
 .parameter-item {
@@ -94,11 +96,12 @@ page {
 .parameter-radio {
   display: flex;
   flex-direction: row;
-  padding-top: 10rpx;
+  padding-top: 20rpx;
   padding-bottom: 10rpx;
   border-bottom: 4rpx #F2F4F5 solid;
   margin-left: 30rpx;
   width: 50%;
+  align-items: center;
 }
 
 .price {
@@ -191,11 +194,12 @@ page {
 }
 
 .select-box {
-  border: 2rpx #1296db solid;
+  border: 2rpx #c2bcbc solid;
   width: 100%;
   position: absolute;
   top: 60rpx;
   background: white;
+  z-index: 100;
 }
 
 .select-option {
@@ -207,4 +211,115 @@ page {
   background: #1296db;
   color: white;
   font-size: 28rpx;
+}
+
+.money {
+  width: 100%;
+  border-bottom: 4rpx #F2F4F5 solid;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+
+.top-money {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 20rpx;
+}
+
+.money-title {
+  font-size: 32rpx;
+  padding-top: 10rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+}
+
+.money-select-out {
+  width: 40%;
+  height: 60rpx;
+  position: relative;
+  margin-left: 10rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.money-select {
+  border-radius: 10rpx;
+  border: 2rpx #c2bcbc solid;
+  height: 60rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.money-select-value {
+  margin-left: 20rpx;
+}
+
+.num-select-option {
+  margin-left: 20rpx;
+  font-size: 28rpx;
+}
+
+.num-select {
+  border: 2rpx #c2bcbc solid;
+  top: 60rpx;
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+  background-color: white;
+}
+
+.result {
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 10rpx;
+  padding-bottom: 20rpx;
+}
+
+.result-text{
+  font-size: 28rpx;
+}
+
+.pay-content {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  padding-left: 10rpx;
+  /* border-bottom: 4rpx #F2F4F5 solid; */
+}
+
+.bottom-btns {
+  margin-top: 50rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.btn-out {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80rpx;
+}
+
+.btn {
+  height: 100%;
+  width: 70%;
+  border-radius: 10rpx;
+  color: white;
+  background-color: #1AAD19;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
 }

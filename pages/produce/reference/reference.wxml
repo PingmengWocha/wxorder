@@ -6,7 +6,7 @@
         <block wx:for="{{optionItems}}" wx:key='id' wx:for-item="item">
           <view class="outlabel">
             <label class="radio">
-              <radio value="{{item.id}}" hidden checked="true"></radio>
+              <radio value="{{item.id}}" hidden checked="{{item.checked}}"></radio>
               <view class="label_icon {{item.checked ? 'active' : ''}}">
                 <view class="label_icon_checked" style="opacity:{{item.checked ? 1 : 0}}"></view>
               </view>
@@ -31,14 +31,14 @@
       <view class="price">
         <view class="input-out">
           <view class="price-text">单价</view>
-          <input class="price-input" value="25000" ></input>
+          <input class="price-input" type="number" placeholder="0" value="{{price}}" bindinput="priceInput" ></input>
         </view>
         <view class="right-text">元/平方米</view>
       </view>
       <view class="price">
         <view class="input-out">
           <view class="price-text">面积</view>
-          <input class="price-input" value="150" ></input>
+          <input class="price-input" type="number" value="{{area}}" placeholder="0" bindinput="areaInput"></input>
         </view>
         <view class="right-text">平方米</view>
       </view>
@@ -59,6 +59,55 @@
           </view>
         </view>
       </view>
+    </view>
+  </view>
+  <view class="money">
+    <view class="top-money">
+      <view class="money-title">贷款利率</view>
+      <view class="money-select-out">
+        <view class="money-select" catchtap="moneyShow">
+          <view class="money-select-value">{{rate}}</view>
+          <view class="icon-select-out">
+            <image class="icon-select" src="/images/other/icon_down.png"/>
+          </view>
+        </view>
+        <view class="num-select" hidden="{{hideMSelect}}">
+          <block wx:for="{{moneyItems}}" wx:key="index" wx:for-item="item" wx:for-index="idx">
+            <view class="num-select-option" catchtap="moneySelect" data-index="{{idx}}">{{item.option}}</view>
+          </block>
+        </view>
+      </view>
+    </view>
+    <view class="result">
+      <view class="result-text">4.9%</view>
+    </view>
+  </view>
+
+  <view class="pay-content">
+    <view class="top-tip">还款方式:</view>
+    <view class="top-options">
+      <radio-group class="group" bindchange="pradioChange">
+        <block wx:for="{{payOptions}}" wx:key='id' wx:for-item="item">
+          <view class="outlabel">
+            <label class="radio">
+              <radio value="{{item.id}}" hidden checked="{{item.checked}}"></radio>
+              <view class="label_icon {{item.checked ? 'active' : ''}}">
+                <view class="label_icon_checked" style="opacity:{{item.checked ? 1 : 0}}"></view>
+              </view>
+              <view class="option-text">{{item.name}}</view>
+            </label>
+          </view>
+        </block>
+      </radio-group>
+    </view>
+  </view>
+
+  <view class="bottom-btns">
+    <view class="btn-out">
+      <view class="btn" bindtap="count">开始计算</view>
+    </view>
+    <view class="btn-out">
+      <view class="btn" bindtap="reset">重新填写</view>
     </view>
   </view>
 </view>

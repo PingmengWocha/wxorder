@@ -211,6 +211,20 @@ Page({
             name: '酸菜鱼'
           }
         ]
+      },
+      {
+        id: 18,
+        url: 'http://img0.imgtn.bdimg.com/it/u=2766255690,1088478936&fm=26&gp=0.jpg',
+        dishes: '偏辣',
+        time: '20200822',
+        like: [
+          {
+            name: '酸菜鱼'
+          },
+          {
+            name: '豆腐'
+          }
+        ]
       }
     ],
 

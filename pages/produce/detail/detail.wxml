@@ -1,0 +1,24 @@
+<view class="root">
+  <scroll-view scroll-y="{{true}}" class="content-item">
+    <view class="top-title">
+      <view class="title">产品参数</view>
+    </view>
+    <block wx:for="{{detailItem.detail}}" wx:key="index" wx:for-item="item">
+      <view class="item-out">
+        <view class="item-title">{{item.title}}</view>
+        <view class="content">{{item.content}}</view>
+      </view>
+    </block>
+    <view class="image-out" style="height: {{ImageHeight}}px">
+      <image class="home-image" src="{{detailItem.url}}" mode="aspectFit"></image>
+    </view>
+  </scroll-view>
+  <view class="bottom-price">
+    <view class="price-text-out">
+      <view class="price-text">单价:</view>
+    </view>
+    <view class="price-out">
+      <view class="price">9999￥</view>
+    </view>
+  </view>
+</view>

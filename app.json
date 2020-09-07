@@ -9,7 +9,9 @@
     "pages/my/password/password",
     "pages/my/myclient/myclient",
     "pages/produce/ambitus/ambitus",
-    "pages/produce/reference/reference"
+    "pages/produce/reference/reference",
+    "pages/produce/contrast/contrast",
+    "pages/produce/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

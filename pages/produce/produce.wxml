@@ -107,7 +107,7 @@
       <view class="house-avatar-out">
         <image class="house-avatar" src="http://img2.imgtn.bdimg.com/it/u=1424373188,297799872&fm=26&gp=0.jpg"/>
       </view>
-      <view class="house-his-out">
+      <view class="house-his-out" bindtap="hisClick">
         <view class="house-his">我看过</view>
       </view>
     </view>
@@ -127,10 +127,12 @@
                   <image class="house-left-img" src="{{item.url}}" mode="widthFix aspectFit"/>
                 </scroll-view>
                 <scroll-view class="house-right-out" scroll-y="{{true}}">
-                  <view class="house-text-items">
-                    <view class="house-name">朝向：</view>
-                    <view class="house-value">南</view>
-                  </view>
+                  <block wx:for="{{item.details}}" wx:key="index" wx:for-item="list">
+                    <view class="house-text-items">
+                      <view class="house-name">{{list.name}}：</view>
+                      <view class="house-value">{{list.info}}</view>
+                    </view>
+                  </block>
                 </scroll-view>
               </view>
               <view class="house-bottom-info-out">
@@ -150,8 +152,58 @@
     <view class="left-bottom-btn">
       <view class="left-btn" bindtap="reference">房贷参考</view>
     </view>
-    <view class="left-bottom-btn">
+    <view class="left-bottom-btn" bindtap="contrast">
       <view class="left-btn">对比</view>
     </view>
+  </view>
+
+  <!-- 弹框 -->
+  <view class="customize-content" wx:if="{{canShow}}" bindtap="miss">
+    <scroll-view scroll-y="{{true}}" class="item-group-out">
+      <view class="item-group">
+        <block wx:for="{{houseHis}}" wx:key="index" wx:for-item="item">
+          <view class="item-out">
+            <view class="tip">{{item.tip}}</view>
+            <view class="res">{{item.res}}</view>
+          </view>
+        </block>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+
+<view class="home-root" wx:if="{{type == 2}}">
+  <view class="house-top-content-out">
+    <view class="house-top-content">
+      <view class="house-avatar-out">
+        <image class="house-avatar" src="http://img2.imgtn.bdimg.com/it/u=1424373188,297799872&fm=26&gp=0.jpg"/>
+      </view>
+      <view class="house-his-out" bindtap="hisClick">
+        <view class="house-his">我看过</view>
+      </view>
+    </view>
+  </view>
+
+  <scroll-view scroll-y="{{true}}" class="produce-item-group">
+    <view class="home-item-out">
+      <block wx:for="{{homeItems}}" wx:key="id" wx:for-item="item">
+        <view class="home-image-out" style="height: {{ImageHeight}}px" bindtap="hdetailClick">
+          <image class="home-image" style="height: {{ImageHeight}}px" src="{{item.url}}" mode="widthFix aspectFit"/>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+  <!-- 弹窗 -->
+  <view class="customize-content" wx:if="{{canShow}}" bindtap="miss">
+    <scroll-view scroll-y="{{true}}" class="item-group-out">
+      <view class="item-group">
+        <block wx:for="{{houseHis}}" wx:key="index" wx:for-item="item">
+          <view class="item-out">
+            <view class="tip">{{item.tip}}</view>
+            <view class="res">{{item.res}}</view>
+          </view>
+        </block>
+      </view>
+    </scroll-view>
   </view>
 </view>

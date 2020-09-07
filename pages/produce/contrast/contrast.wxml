@@ -1,0 +1,21 @@
+<view class="root">
+  <view class="content-group">
+    <view class="items-out">
+      <view class="left-item-out">
+        <block wx:for="{{parameterItems}}" wx:key="index" wx:for-item="item">
+          <view class="middle-item">{{item.name}}</view>
+        </block>
+      </view>
+      <view class="middle-item-out">
+        <block wx:for="{{Ahouse}}" wx:key="index" wx:for-item="item">
+          <view class="middle-item">{{item.name}}</view>
+        </block>
+      </view>
+      <view class="right-item-out">
+        <block wx:for="{{Bhouse}}" wx:key="index" wx:for-item="item">
+          <view class="middle-item">{{item.name}}</view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>

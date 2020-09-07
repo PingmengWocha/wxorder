@@ -77,6 +77,60 @@ Page({
         price: 158.0
       }
     ],
+    houseHis: [
+      {
+        tip: '来楼盘次数',
+        res: 3
+      },
+      {
+        tip: '上次看房',
+        res: '2020-08-09 12:20:09'
+      },
+      {
+        tip: '上次接待',
+        res: '小张'
+      },
+      {
+        tip: '关注点',
+        res: '学区房，购物遍历，交通方便'
+      }
+    ],//房产历史
+    homeHis: [
+      {
+        tip: '来门店次数',
+        res: 3
+      },
+      {
+        tip: '上次到店',
+        res: '2020-08-09 12:20:09'
+      },
+      {
+        tip: '上次接待',
+        res: '小张'
+      },
+      {
+        tip: '关注点',
+        res: '床垫软硬适中'
+      }
+    ],//家居历史
+    homeItems: [
+      {
+        id: 0,
+        url: 'http://img2.imgtn.bdimg.com/it/u=660880553,2923388103&fm=26&gp=0.jpg'
+      },
+      {
+        id: 1,
+        url: 'http://img5.imgtn.bdimg.com/it/u=3141091343,828620550&fm=26&gp=0.jpg'
+      },
+      {
+        id: 2,
+        url: 'http://img0.imgtn.bdimg.com/it/u=3315125281,3900744129&fm=26&gp=0.jpg'
+      },
+      {
+        id: 3,
+        url: 'http://img5.imgtn.bdimg.com/it/u=2515270731,1051295312&fm=26&gp=0.jpg'
+      }
+    ],//家居图片
     hideSearch: true, //控制搜索框显示和客户历史显示(互斥关系)
     canShow: false, //控制用户喜好弹框显示
     type: 1, //控制餐饮(0)，房产(1)，家居页面(2)显示
@@ -157,6 +211,8 @@ Page({
         goodinfo: '优势描述：1、入户玄关柜设计轻松收纳鞋帽包裹2、L型厨房房间2、L型厨房房间2、L型厨房房间2、L型厨房房间2、L型厨房房间2、L型厨房房间2、L型厨房房间'
       }
     ], //房产item列表
+    ImageHeight: 0, //家居图片高度
+    windowWidth: 0, //手机宽度
   },
 
   //房地产选择框点击事件
@@ -178,6 +234,20 @@ Page({
         })
       }
     }
+  },
+
+  //家居详情
+  hdetailClick(e) {
+    wx.navigateTo({
+      url: './detail/detail',
+    })
+  },
+
+  //户型对比
+  contrast(e) {
+    wx.navigateTo({
+      url: './contrast/contrast',
+    })
   },
 
   //点击查看房产详情
@@ -221,6 +291,12 @@ Page({
     })
   },
 
+  //房产点击我看过
+  hisClick(e) {
+    this.setData({
+      canShow: true
+    })
+  },
   //点击我吃过显示喜好弹窗
   history(e) {
     this.setData({
@@ -239,7 +315,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let that = this
+    wx.getSystemInfo({
+      success: (res) => {
+        that.setData({
+          ImageHeight: res.windowWidth * 0.6
+        })
+      },
+    })
   },
 
   /**
