@@ -1,6 +1,7 @@
 // pages/login/login.js
 const apiUtil = require('../../utils/ApiUtil')
 const api = require('../../constants/HttpConstants')
+const app = getApp()
 Page({
 
   /**
@@ -8,6 +9,7 @@ Page({
    */
   data: {
     phone: '',
+    account: '',
     password: ''
   },
 
@@ -16,46 +18,100 @@ Page({
     this.data.phone = e.detail.value
   },
 
+  //账号输入
+  accountTf(e) {
+    this.setData({
+      account: e.detail.value
+    })
+  },
+
   //密码输入
   passwordTf: function(e) {
-    this.data.password = e.detail.value
+    // this.data.password = e.detail.value
+    this.setData({
+      password: e.detail.value
+    })
   },
 
   goto() {
     let that = this
-    if(this.data.phone != null && this.data.phone.length > 0) {
-      if(!that.telFun(that.data.phone)){
+    // if(this.data.phone != null && this.data.phone.length > 0) {
+    //   if(!that.telFun(that.data.phone)){
+    //     wx.showToast({
+    //       title: '请输入正确的手机号',
+    //       icon: 'none',
+    //       duration: 2000
+    //     })
+    //     return;
+    //   }else {
+    //     console.log(that.data.password.length)
+    //     if(that.data.password == null || that.data.password.length <= 0) {
+    //       wx.showToast({
+    //         title: '请输密码',
+    //         icon: 'none',
+    //         duration: 2000
+    //       })
+    //       return
+    //     }else {
+    //       //网络请求
+
+    //     }
+    //   }
+    // }else {
+    //   wx.showToast({
+    //     title: '手机号不能为空',
+    //     icon: 'none',
+    //     duration: 2000
+    //   })
+    //   return
+    // }
+    if(this.data.account != null && this.data.account.length > 0) {
+      console.log(that.data.password.length)
+      if(that.data.password == null || that.data.password.length <= 0) {
         wx.showToast({
-          title: '请输入正确的手机号',
+          title: '请输密码',
           icon: 'none',
           duration: 2000
         })
-        return;
+        return
       }else {
-        console.log(that.data.password.length)
-        if(that.data.password == null || that.data.password.length <= 0) {
-          wx.showToast({
-            title: '请输密码',
-            icon: 'none',
-            duration: 2000
-          })
-          return
-        }else {
-          //网络请求
-
+        //网络请求
+        let data = {
+          clerkLoginAccount: that.data.account,
+          loginPassword: that.data.password
         }
+        apiUtil.request(api.login,data).then(res => {
+          console.log(res)
+          if(res.code == 200) {
+            wx.setStorageSync('userId', res.data.id)
+            wx.setStorageSync('hasLogin', 1) //0未登录1已登录
+            if(res.data.industryType === 'sale') {
+              app.globalData.type = 1
+              wx.setStorageSync('type', 1)
+            }
+            if(res.data.industryType === 'house') {
+              app.globalData.type = 2
+              wx.setStorageSync('type', 2)
+            }
+            if(res.data.industryType === 'diet') {
+              wx.setStorageSync('type', 0)
+              app.globalData.type = 0
+            }
+            app.globalData.hasLogin = true
+            wx.switchTab({
+              url: '/pages/index/index',
+            })
+          }
+        })
       }
     }else {
       wx.showToast({
-        title: '手机号不能为空',
+        title: '账号不能为空',
         icon: 'none',
         duration: 2000
       })
       return
     }
-    wx.switchTab({
-      url: '/pages/index/index',
-    })
   },
 
 

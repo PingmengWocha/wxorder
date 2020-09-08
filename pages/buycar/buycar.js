@@ -1,6 +1,7 @@
 // pages/buycar/buycar.js
 const apiUtil = require("../../utils/ApiUtil.js")
 const api = require('../../constants/HttpConstants')
+const app = getApp()
 Page({
 
   /**
@@ -37,7 +38,8 @@ Page({
         num: 3
       }
     ],
-    totalPrice: 0
+    totalPrice: 0,
+    type: 4,//0餐厅1房产2家居3未登录4没有内容
   },
 
   //桌号
@@ -101,6 +103,13 @@ Page({
     })
   },
 
+  //跳转登录页面
+  goLogin() {
+    wx.navigateTo({
+      url: '../login/login',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -119,6 +128,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    let that = this
+    let hasLogin = app.globalData.hasLogin
+    if(!hasLogin) {
+      this.setData({
+        type: 3
+      })
+    }else {
+      let type = app.globalData.type
+      this.setData({
+        type: type
+      })
+    }
     let orderItems = this.data.orderItems
     let totalPrice = this.data.totalPrice
     totalPrice = 0

@@ -6,8 +6,9 @@
     <view class="text">
       <view class="phone">
         <view class="content">
-          <view class="left_phone">手机号</view>
-          <input class="right_phone" type="number" placeholder="请输入您的手机号" bindinput="phoneTf" maxlength="11"></input>
+          <view class="left_phone">账号</view>
+          <!-- <input class="right_phone" type="number" placeholder="请输入您的手机号" bindinput="phoneTf" maxlength="11"></input> -->
+          <input class="right_phone" placeholder="请输入您的账号" bindinput="accountTf"></input>
         </view>
         <view class="line"></view>
       </view>

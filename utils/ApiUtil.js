@@ -15,22 +15,21 @@ const api = require('../constants/HttpConstants.js');
      var timestamp = Date.parse(new Date())
      timestamp = timestamp / 100;
      var userInfo = wx.getStorageSync('userInfo')
-     var userId = wx.getStorageSync('userId')
-     var userToken = wx.getStorageSync('userToken')
-     var openId = wx.getStorageSync('openId')
+    //  var userId = wx.getStorageSync('userId')
+    //  var userToken = wx.getStorageSync('userToken')
+    //  var openId = wx.getStorageSync('openId')
      var temp;
      if(userInfo == "") {
-       temp = {
-        "timestamp": timestamp,
-        "body": {}
-       }
-      temp["body"] = data;
-      var jsonstr = JSON.stringify(temp)
+      //  temp = {
+      //   "timestamp": timestamp,
+      //   "body": {}
+      //  }
+      // temp["body"] = data;
+      // var jsonstr = JSON.stringify(temp)
+      var jsonstr = JSON.stringify(data)
       wx.request({
         url: url,
-        data: {
-          params: jsonstr
-        },
+        data: jsonstr,
         method: method,
         header: {
           // 'Authorization': 'userToken',
@@ -39,8 +38,12 @@ const api = require('../constants/HttpConstants.js');
         success: function(res) {
           console.log('请求地址:' + url)
           console.log('请求参数:')
-          console.log(temp)
+          // console.log(temp)
+          // console.log(JSON.stringify(temp))
+          console.log(data)
+          console.log(JSON.stringify(data))
           console.log('返回数据:')
+          console.log(res)
           if(res.statusCode == 200) {
             if(res.data.code == 200) {
               resolve(res.data)

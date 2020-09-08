@@ -1,4 +1,4 @@
-<view class="root">
+<view class="root" wx:if="{{type != 3}}">
   <view class="background">
     <view class="background_top"></view>
   </view>
@@ -61,3 +61,23 @@
     </view>
   </view>
 </view>
+
+<!-- 未登录 -->
+<view class="login-root" wx:if="{{type == 3}}">
+  <view class="login-content">
+    <view class="login-top-content">
+      <view class="login-image-out">
+        <image class="login-image" src="../../images/other/background-notlogin.png"/>
+      </view>
+      <view class="login-top-text">您还未登录，请登录后查看内容</view>
+    </view>
+    <view class="login-bottom-btn">
+      <view class="login-btn-out">
+        <view class="login-btn" bindtap="goLogin">登录</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 空白内容 -->
+<view class="root" wx:if="{{type == 4}}"></view>

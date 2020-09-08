@@ -15,6 +15,9 @@ App({
     })
   },
   globalData: {
-    isIphoneX: false
+    isIphoneX: false,
+    hasLogin: false, //是否登录
+    type: 0, //0餐厅1房产2家居
+    selectedContent: [], //首页选中的用户
   }
 })

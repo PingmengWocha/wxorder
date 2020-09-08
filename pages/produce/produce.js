@@ -1,32 +1,36 @@
 // pages/produce/produce.js
+const apiUtil = require('../../utils/ApiUtil')
+const api = require('../../constants/HttpConstants')
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    clientItems: [
-      {
-        id: 1,
-        url: 'http://img2.imgtn.bdimg.com/it/u=1424373188,297799872&fm=26&gp=0.jpg',
-        haveHis: true
-      },
-      {
-        id: 2,
-        url: 'http://img2.imgtn.bdimg.com/it/u=1424373188,297799872&fm=26&gp=0.jpg',
-        haveHis: false
-      },
-      {
-        id: 3,
-        url: 'http://img2.imgtn.bdimg.com/it/u=1424373188,297799872&fm=26&gp=0.jpg',
-        haveHis: false
-      },
-      {
-        id: 4,
-        url: 'http://img2.imgtn.bdimg.com/it/u=1424373188,297799872&fm=26&gp=0.jpg',
-        haveHis: false
-      }
-    ],
+    // clientItems: [
+    //   {
+    //     id: 1,
+    //     url: 'http://img2.imgtn.bdimg.com/it/u=1424373188,297799872&fm=26&gp=0.jpg',
+    //     haveHis: true
+    //   },
+    //   {
+    //     id: 2,
+    //     url: 'http://img2.imgtn.bdimg.com/it/u=1424373188,297799872&fm=26&gp=0.jpg',
+    //     haveHis: false
+    //   },
+    //   {
+    //     id: 3,
+    //     url: 'http://img2.imgtn.bdimg.com/it/u=1424373188,297799872&fm=26&gp=0.jpg',
+    //     haveHis: false
+    //   },
+    //   {
+    //     id: 4,
+    //     url: 'http://img2.imgtn.bdimg.com/it/u=1424373188,297799872&fm=26&gp=0.jpg',
+    //     haveHis: false
+    //   }
+    // ],
+    clientItems: [],
     produceItems: [
       {
         id: 1,
@@ -133,7 +137,7 @@ Page({
     ],//家居图片
     hideSearch: true, //控制搜索框显示和客户历史显示(互斥关系)
     canShow: false, //控制用户喜好弹框显示
-    type: 1, //控制餐饮(0)，房产(1)，家居页面(2)显示
+    type: 5, //控制餐饮(0)，房产(1)，家居页面(2),未登录(3)没有内容(4)空白内容(5)显示
     checkboxItems: [
       {
         id: 0,
@@ -236,6 +240,13 @@ Page({
     }
   },
 
+  // 跳转登录页面
+  goLogin(e) {
+    wx.navigateTo({
+      url: '../login/login',
+    })
+  },
+
   //家居详情
   hdetailClick(e) {
     wx.navigateTo({
@@ -336,7 +347,25 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let that = this
+    let seletedContent = app.globalData.selectedContent
+    console.log(seletedContent)
+    if(seletedContent != null && seletedContent.length > 0) {
+      this.setData({
+        clientItems: seletedContent
+      })
+    }
+    let hasLogin = app.globalData.hasLogin
+    if(!hasLogin) {
+      this.setData({
+        type: 3
+      })
+    }else {
+      let type = app.globalData.type
+      this.setData({
+        type: type
+      })
+    }
   },
 
   /**

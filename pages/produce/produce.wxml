@@ -1,4 +1,5 @@
 <!-- 餐饮页面 -->
+<!-- type==0 -->
 <view class="root" wx:if="{{type == 0}}">
   <view class="top-search" hidden="{{hideSearch}}">
     <view class="search-out">
@@ -12,7 +13,7 @@
       <block wx:for="{{clientItems}}" wx:key="id" wx:for-item="item">
         <view class="avatar-out">
           <view class="fixscroll">
-            <image class="avatar" src="{{item.url}}"></image>
+            <image class="avatar" src="{{item.image}}"></image>
             <view class="text" wx:if="{{item.haveHis}}" bindtap="history">我吃过</view>
             <view class="text" wx:if="{{!item.haveHis}}"></view>
           </view>
@@ -101,8 +102,9 @@
 </view>
 
 <!-- 房地产代码 -->
+<!-- type==1 -->
 <view class="house-root" wx:if="{{type == 1}}">
-  <view class="house-top-content-out">
+  <!-- <view class="house-top-content-out">
     <view class="house-top-content">
       <view class="house-avatar-out">
         <image class="house-avatar" src="http://img2.imgtn.bdimg.com/it/u=1424373188,297799872&fm=26&gp=0.jpg"/>
@@ -111,6 +113,22 @@
         <view class="house-his">我看过</view>
       </view>
     </view>
+  </view> -->
+  <view class="house-top-content-out">
+    <scroll-view scroll-x="{{true}}" class="shouse-top-content">
+      <block wx:for="{{clientItems}}" wx:key="id" wx:for-item="item">
+        <view class="house-avatar-item">
+          <view class="house-fixscroll">
+            <view class="house-avatar-image-out">
+              <image class="house-avatar-image" src="{{item.image}}"/>
+            </view>
+            <view class="house-avatar-text-out">
+              <view class="house-avatar-text">我来过</view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
   </view>
   <view class="house-content">
     <scroll-view scroll-y="{{true}}" class="shouse-content">
@@ -172,8 +190,10 @@
   </view>
 </view>
 
+<!-- 家居 -->
+<!-- type==2 -->
 <view class="home-root" wx:if="{{type == 2}}">
-  <view class="house-top-content-out">
+  <!-- <view class="house-top-content-out">
     <view class="house-top-content">
       <view class="house-avatar-out">
         <image class="house-avatar" src="http://img2.imgtn.bdimg.com/it/u=1424373188,297799872&fm=26&gp=0.jpg"/>
@@ -182,6 +202,22 @@
         <view class="house-his">我看过</view>
       </view>
     </view>
+  </view> -->
+  <view class="house-top-content-out">
+    <scroll-view scroll-x="{{true}}" class="shouse-top-content">
+      <block wx:for="{{clientItems}}" wx:key="id" wx:for-item="item">
+        <view class="house-avatar-item">
+          <view class="house-fixscroll">
+            <view class="house-avatar-image-out">
+              <image class="house-avatar-image" src="{{item.image}}"/>
+            </view>
+            <view class="house-avatar-text-out">
+              <view class="house-avatar-text">我来过</view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
   </view>
 
   <scroll-view scroll-y="{{true}}" class="produce-item-group">
@@ -207,3 +243,24 @@
     </scroll-view>
   </view>
 </view>
+
+<!-- 未登录 -->
+<!-- type==3 -->
+<view class="login-root" wx:if="{{type == 3}}">
+  <view class="login-content">
+    <view class="login-top-content">
+      <view class="login-image-out">
+        <image class="login-image" src="../../images/other/background-notlogin.png"/>
+      </view>
+      <view class="login-top-text">您还未登录，请登录后查看内容</view>
+    </view>
+    <view class="login-bottom-btn">
+      <view class="login-btn-out">
+        <view class="login-btn" bindtap="goLogin">登录</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 空白页面 -->
+<view class="root" wx:if="{{type==5}}"></view>
