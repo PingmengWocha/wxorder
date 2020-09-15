@@ -344,6 +344,160 @@ page {
   margin-left: 30rpx;
 }
 
+/* 菜品详情弹框 */
+.food-dialog {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0);
+  top: 0rpx;
+  left: 0rpx;
+  right: 0rpx;
+  bottom: 0rpx;
+  z-index: 100;
+}
+
+.food-dialog-content {
+  width: 95%;
+  height: 60%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10rpx;
+}
+
+.top-title {
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  font-size: 36rpx;
+  font-weight: 600;
+  flex: 1;
+}
+
+.detail-content {
+  flex: 6;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.food-detail-item-out {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+}
+
+.food-detail-title {
+  flex: 1;
+  margin-left: 20rpx;
+}
+
+.food-detail-content {
+  flex: 4;
+  margin-left: 20rpx;
+}
+
+.food-bottom-btn {
+  flex: 2;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.food-btn {
+  color: #1AAD19;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+
+.bus-bottom-content-out {
+  position: fixed;
+  bottom: 10rpx;
+  width: 100%;
+  height: 100rpx;
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.bus-bottom-content {
+  width: 80%;
+  border-radius: 180rpx;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.left-bus-content {
+  flex: 3;
+  background-color: white;
+  border-top-left-radius: 180rpx;
+  border-bottom-left-radius: 180rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.bus-left-image-out {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.bus-left-image {
+  width: 50%;
+  height: 50%;
+}
+
+.bus-left-item {
+  flex: 4;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.bus-title {
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+
+.right-bus-content {
+  flex: 1;
+  background: linear-gradient(#B5CDFD,#6186E4);
+  border-top-right-radius: 180rpx;
+  border-bottom-right-radius: 180rpx;
+}
+
+.right-bus-text {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+}
+
+
 /* -----+++++++++++++++++++++++++++++++++++++++++++++++++-------------------+++++++++++++++++++ */
 /* -----+++++++++++++++++++++++++++++++++++++++++++++++++-------------------+++++++++++++++++++ */
 /* -----+++++++++++++++++++++++++++++++++++++++++++++++++-------------------+++++++++++++++++++ */

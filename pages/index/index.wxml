@@ -20,7 +20,7 @@
             <view class="item-time">
               <view class="time">{{item.faceTime}}</view>
               <view class="star">
-                <wux-rater hover-class="none" slot="header" fontSize="{{18}}" margin="{{0}}" allow-half disabled="false" default-value="4"></wux-rater>
+                <wux-rater slot="header" fontSize="{{18}}" margin="{{0}}" allow-half disabled="false" defaultValue="4"></wux-rater>
                 <!-- <wux-cell>
                   <wux-rater slot="header" fontSize="{{18}}" margin="{{0}}" allow-half disabled="false" default-value="{{item.star}}"></wux-rater>
                 </wux-cell> -->

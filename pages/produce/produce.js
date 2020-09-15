@@ -30,55 +30,67 @@ Page({
     //     haveHis: false
     //   }
     // ],
+    busCarNum: 0, //已选择的菜品数量
+    addedOrder: [], //已选择的菜品列表
     clientItems: [],
+    synopsis: '',//菜品简介
+    foodName: '',//菜品名称
+    main: '',//主料
+    material: '',//辅料
+    taste: '', //口味
+    foodDialogShow: false, //控制菜品详情弹框是否显示
+    personnum: '', //菜品招待人数
+    tablenum: '', //菜品招待桌号
     produceItems: [
       {
         id: 1,
-        url: 'http://img3.imgtn.bdimg.com/it/u=2710306391,904435642&fm=26&gp=0.jpg',
-        name: '酸菜鱼',
-        price: 88.8
+        url: '../../images/order/tcpg.jpg',
+        name: '糖醋排骨',
+        price: 88.8,
+        synopsis: '酸甜适中，不油不腻，口感丰富细腻，不会觉得任何一种调料的突兀。颜色呈糖稀色，不浓不淡。就是拿汁水拌米饭也是一样好吃',
+        main: '小排 500g',
+        material: '料酒、生抽、老抽、香醋、糖、盐、味精、芝麻',
+        taste: '酸甜'
       },
       {
         id: 2,
-        url: 'http://img3.imgtn.bdimg.com/it/u=2710306391,904435642&fm=26&gp=0.jpg',
-        name: '水晶猪肘',
-        price: 88.0
+        url: '../../images/order/scy.jpg',
+        name: '酸菜鱼',
+        price: 88.0,
+        synopsis: '酸辣爽口，鱼片滑嫩',
+        main: '黑鱼、酸菜',
+        material: '白胡椒、蛋清、辣椒、花椒、葱、干淀粉、食用油、盐',
+        taste: '辣'
       },
       {
         id: 3,
-        url: 'http://img3.imgtn.bdimg.com/it/u=2710306391,904435642&fm=26&gp=0.jpg',
-        name: '咸鸭',
-        price: 98.0
+        url: '../../images/order/sltds.jpg',
+        name: '酸辣土豆丝',
+        price: 98.0,
+        synopsis: '简单的材料和调味料烧的一个菜，味道却很好',
+        main: '土豆、青椒、朝天椒',
+        material: '盐、油、醋',
+        taste: '微辣'
       },
       {
         id: 4,
-        url: 'http://img3.imgtn.bdimg.com/it/u=2710306391,904435642&fm=26&gp=0.jpg',
-        name: '红烧老鹅',
-        price: 128.0
+        url: '../../images/order/sznr.jpg',
+        name: '水煮牛肉',
+        price: 128.0,
+        synopsis: '红绿相映，香味浓郁，麻辣回香，风味独特',
+        main: '牛里脊肉、豆苗、芹菜、大白菜',
+        material: '植物油、郫县豆瓣酱、干辣椒末、花椒粉、蒜、姜、酱油、料酒、胡椒粉、鸡精、水淀粉、高汤、盐',
+        taste: '麻辣'
       },
       {
         id: 5,
-        url: 'http://img3.imgtn.bdimg.com/it/u=2710306391,904435642&fm=26&gp=0.jpg',
-        name: '辣子鸡',
-        price: 95.0
-      },
-      {
-        id: 11,
-        url: 'http://img3.imgtn.bdimg.com/it/u=2710306391,904435642&fm=26&gp=0.jpg',
-        name: '香辣烤鱼',
-        price: 115.0
-      },
-      {
-        id: 12,
-        url: 'http://img3.imgtn.bdimg.com/it/u=2710306391,904435642&fm=26&gp=0.jpg',
-        name: '一网打尽',
-        price: 150.0
-      },
-      {
-        id: 13,
-        url: 'http://img3.imgtn.bdimg.com/it/u=2710306391,904435642&fm=26&gp=0.jpg',
-        name: '蒜蓉龙虾',
-        price: 158.0
+        url: '../../images/order/gbjd.jpg',
+        name: '宫保鸡丁',
+        price: 95.0,
+        synopsis: '酸辣口，鸡肉滑嫩，花生米爽脆，大葱也好吃。是一道超级下饭菜',
+        main: '鸡胸肉、大葱、油炸花生米、辣椒段',
+        material: '盐、生抽、老抽、香醋、糖、姜汁、蒜泥、鸡精、水淀粉、花椒粉、白胡椒、料酒',
+        taste: '酸辣'
       }
     ],
     houseHis: [
@@ -275,31 +287,84 @@ Page({
     })
   },
 
+  //人数输入
+  clientTf(e) {
+    console.log(e.detail.value)
+    this.setData({
+      personnum: e.detail.value
+    })
+  },
+
+  //桌号输入
+  orderTf(e) {
+    this.setData({
+      tablenum: e.detail.value
+    })
+  },
+
+  //添加菜品
+  addOrder(e) {
+    console.log(e.currentTarget.dataset.index)
+    let index = e.currentTarget.dataset.index
+    this.data.addedOrder.push(this.data.produceItems[index])
+    console.log(this.data.addedOrder)
+    let num = this.data.busCarNum + 1
+    this.setData({
+      busCarNum: num
+    })
+  },
+
+  //结算跳转到购物车页面
+  balance() {
+    wx.switchTab({
+      url: '../buycar/buycar',
+    })
+  },
+
+  //菜品详情点击退出
+  backfood() {
+    this.setData({
+      foodDialogShow: false,
+      foodName: '',
+      synopsis: '',
+      main: '',
+      material: '',
+      taste: '',
+      hideSearch: true
+    })
+  },
+
   //菜品详情点击事件
   detailClick(e) {
     let that = this
     let produceItems = this.data.produceItems
     let index = e.currentTarget.dataset.index
-    let name = produceItems[index].name
-    let content = '你赖东东不错嘛'
+    this.setData({
+      foodName: produceItems[index].name,
+      synopsis: produceItems[index].synopsis,
+      main: produceItems[index].main,
+      material: produceItems[index].material,
+      taste: produceItems[index].taste,
+      foodDialogShow: true,
+    })
     if(this.data.hideSearch) {
       this.setData({
         hideSearch: false
       })
     }
-    wx.showModal({
-      title: name,
-      content: content,
-      showCancel: false,
-      success(res) {
-        if(res.confirm) {
-          console.log('点击了确定')
-          that.setData({
-            hideSearch: true
-          })
-        }
-      }
-    })
+    // wx.showModal({
+    //   title: name,
+    //   content: content,
+    //   showCancel: false,
+    //   success(res) {
+    //     if(res.confirm) {
+    //       console.log('点击了确定')
+    //       that.setData({
+    //         hideSearch: true
+    //       })
+    //     }
+    //   }
+    // })
   },
 
   //房产点击我看过

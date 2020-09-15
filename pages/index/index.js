@@ -102,15 +102,29 @@ Page({
     let data = {
       ids: ids
     }
-    // apiUtil.request(api.admit, data).then(res => {
-    //   console.log(res)
-    // })
-    app.globalData.selectedContent = selectedContent
-    wx.switchTab({
-      url: '/pages/produce/produce'
+    wx.showLoading({
+      title: '操作中...',
+      mask: true
     })
-    this.setData({
-      checkboxItems: checkboxItems
+    apiUtil.request(api.admit, data).then(res => {
+      console.log(res)
+      if(res.code == 200) {
+        wx.hideLoading()
+        app.globalData.selectedContent = selectedContent
+        wx.switchTab({
+          url: '/pages/produce/produce'
+        })
+        this.setData({
+          checkboxItems: checkboxItems
+        })
+      }else {
+        wx.hideLoading()
+        wx.showToast({
+          title: res.data.msg,
+          icon: 'none',
+          duration: 2000
+        })
+      }
     })
   },
 

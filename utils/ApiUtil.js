@@ -27,6 +27,7 @@ const api = require('../constants/HttpConstants.js');
       // temp["body"] = data;
       // var jsonstr = JSON.stringify(temp)
       var jsonstr = JSON.stringify(data)
+      console.log(jsonstr)
       wx.request({
         url: url,
         data: jsonstr,
