@@ -170,6 +170,15 @@ page {
   margin-bottom: 10rpx;
 }
 
+.item.active {
+  height: 140rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  margin-bottom: 150rpx;
+}
+
 .left-img {
   flex: 1;
   height: 100%;
@@ -221,6 +230,10 @@ page {
 
 .plus {
   font-size: 48rpx;
+}
+
+.fouce-plus {
+  background-color: #F2F4F5;
 }
 
 .other-out {

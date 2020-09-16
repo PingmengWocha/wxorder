@@ -1,19 +1,19 @@
 <view class="root" wx:if="{{type == 0}}">
   <view class="top-info">
     <view class="left-avatar">
-      <image class="avatar" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3068307678,171102872&fm=26&gp=0.jpg"/>
+      <image class="avatar" src="{{avatar}}" mode="aspectFit widthFix"/>
     </view>
     <view class="right">
       <view class="right-top">
         <view class="text">桌号</view>
         <view class="orderinput-out">
-          <input class="orderinput" placeholder-class="porderinput" value="16" type="number" placeholder="请输入桌号" bindinput="orderTf" maxlength="11"></input>
+          <input class="orderinput" placeholder-class="porderinput" value="{{tableNum}}" type="number" placeholder="请输入桌号" bindinput="orderTf" maxlength="11"></input>
         </view>
       </view>
       <view class="right-top">
         <view class="text">客数</view>
         <view class="orderinput-out">
-          <input class="orderinput" placeholder-class="porderinput" value="16" type="number" placeholder="请输入人数" bindinput="clientTf" maxlength="11"></input>
+          <input class="orderinput" placeholder-class="porderinput" value="{{personNum}}" type="number" placeholder="请输入人数" bindinput="clientTf" maxlength="11"></input>
         </view>
       </view>
     </view>
@@ -22,7 +22,7 @@
     <scroll-view class="sitem-group" scroll-y="{{true}}">
       <view class="item" wx:for="{{orderItems}}" wx:key="id" wx:for-item="item" wx:for-index="idx">
         <view class="food-out">
-          <image class="food-img" src="{{item.url}}" mode="aspectFit"/>
+          <image class="food-img" src="{{item.url}}" mode="aspectFill widthFix"/>
         </view>
         <view class="right-item">
           <view class="food-info">
@@ -80,4 +80,11 @@
 </view>
 
 <!-- 空白内容 -->
-<view wx:if="{{type == 4}}"></view>
+<view wx:if="{{type == 4 || type == 1 || type == 2}}" class="null-root">
+  <view class="null-content">
+    <view class="null-image-out">
+      <image class="null-image" src="../../images/other/null.png"/>
+    </view>
+    <view class="null-text">还没有内容哦</view>
+  </view>
+</view>

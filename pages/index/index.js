@@ -14,6 +14,7 @@ Page({
     isRequest: true, //是否可以加载跟多
     hasSelected: [],//已选择的内容
     hasLogin: false, //判断是否登录
+    update: '', //计时器
   },
 
   //点击操作事件
@@ -131,7 +132,7 @@ Page({
   //下拉刷新
   onPullDownRefresh: function() {
     let that = this
-    this.data.pageNum == 0
+    this.data.pageNum = 0
     this.setData({
       isRequest: true
     })
@@ -156,10 +157,35 @@ Page({
       app.globalData.hasLogin = true
       let type = wx.getStorageSync('type')
       app.globalData.type = type
+      this.data.pageNum = 0
+      // this.getClients()
+      this.startUpdatae()
     }else {
       this.data.hasLogin = false
       app.globalData.hasLogin = false
     }
+  },
+
+  onHide() {
+    this.stopUpdate()
+  },
+
+  //每隔60s请求一次首页内容接口
+  startUpdatae() {
+    let that = this
+    clearInterval(that.data.update)
+    this.data.update = setInterval(() => {
+      if(this.data.hasSelected.length <= 0) {
+        this.data.pageNum = 0
+        this.getClients()
+      }
+    },60000)
+  },
+
+  //取消计时
+  stopUpdate() {
+    let that = this
+    clearInterval(that.data.update)
   },
 
   getClients() {
@@ -175,11 +201,13 @@ Page({
     apiUtil.request(api.indexItem, data).then(res => {
       
       if(res.code == 200) {
-        console.log(res)
+        // console.log(res)
+        console.log(that.data.pageNum)
         if(that.data.pageNum == 0) {
           that.setData({
             checkboxItems: []
           })
+          console.log(that.data.checkboxItems)
         }
         that.data.pageNum = that.data.pageNum + 1
         var rows = res.rows

@@ -12,7 +12,7 @@ page {
 }
 
 .top-info {
-  flex: 1;
+  height: 12%;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -30,7 +30,7 @@ page {
 }
 
 .right {
-  flex: 1;
+  flex: 3;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -69,10 +69,10 @@ page {
 
 /* 菜的列表 */
 .item-group {
-  flex: 2;
+  height: 60%;
   width: 100%;
-  padding-top: 20rpx;
-  padding-bottom: 20rpx;
+  padding-top: 2%;
+  padding-bottom: 2%;
   flex-shrink: 0;
   overflow: hidden;
 }
@@ -115,6 +115,17 @@ page {
 }
 
 .food-name {
+  padding-left: 10rpx;
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.food-price {
+  padding-left: 10rpx;
   display: -webkit-box;
   word-break: break-all;
   text-overflow: ellipsis;
@@ -171,11 +182,11 @@ page {
 
 /* 底部 */
 .bottom {
-  flex: 2;
+  height: 20%;
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-bottom: 30rpx;
+  padding-bottom: 4%;
   flex-shrink: 0;
 }
 
@@ -318,6 +329,41 @@ page {
   align-items: center;
 }
 
+
+.null-root {
+  width: 100%;
+  height: 100%;
+}
+
+.null-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.null-image-out {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.null-image {
+  width: 40%;
+  height: 40%;
+}
+
+.null-text {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: #1296db;
+  font-size: 48rpx;
+}
 
 
 

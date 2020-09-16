@@ -50,7 +50,7 @@
     </view>
     <view class="order-item">
       <scroll-view scroll-y="{{true}}" class="sorder-item">
-        <view class="item"  wx:for="{{produceItems}}" wx:key="id" wx:for-item="item" wx:for-index="idx">
+        <view class="item {{idx == produceItems.length-1 ? 'active' : ''}}"  wx:for="{{produceItems}}" wx:key="id" wx:for-item="item" wx:for-index="idx">
           <image class="left-img" src="{{item.url}}" mode="aspectFill widthFix"/>
           <view class="name-out">
             <view class="name">{{item.name}}</view>
@@ -61,7 +61,7 @@
             </view>
             <view class="details-other">
               <view class="plus-out">
-                <view class="plus" bindtap="addOrder" data-index="{{idx}}">+</view>
+                <view class="plus" hover-class="fouce-plus" bindtap="addOrder" data-index="{{idx}}">+</view>
               </view>
               <view class="other-out">
                 <view class="other" bindtap="detailClick" data-index="{{idx}}">详情</view>

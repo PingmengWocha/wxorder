@@ -50,7 +50,8 @@ Page({
         synopsis: '酸甜适中，不油不腻，口感丰富细腻，不会觉得任何一种调料的突兀。颜色呈糖稀色，不浓不淡。就是拿汁水拌米饭也是一样好吃',
         main: '小排 500g',
         material: '料酒、生抽、老抽、香醋、糖、盐、味精、芝麻',
-        taste: '酸甜'
+        taste: '酸甜',
+        num: 1
       },
       {
         id: 2,
@@ -60,7 +61,8 @@ Page({
         synopsis: '酸辣爽口，鱼片滑嫩',
         main: '黑鱼、酸菜',
         material: '白胡椒、蛋清、辣椒、花椒、葱、干淀粉、食用油、盐',
-        taste: '辣'
+        taste: '辣',
+        num: 1
       },
       {
         id: 3,
@@ -70,7 +72,8 @@ Page({
         synopsis: '简单的材料和调味料烧的一个菜，味道却很好',
         main: '土豆、青椒、朝天椒',
         material: '盐、油、醋',
-        taste: '微辣'
+        taste: '微辣',
+        num: 1
       },
       {
         id: 4,
@@ -80,7 +83,8 @@ Page({
         synopsis: '红绿相映，香味浓郁，麻辣回香，风味独特',
         main: '牛里脊肉、豆苗、芹菜、大白菜',
         material: '植物油、郫县豆瓣酱、干辣椒末、花椒粉、蒜、姜、酱油、料酒、胡椒粉、鸡精、水淀粉、高汤、盐',
-        taste: '麻辣'
+        taste: '麻辣',
+        num: 1
       },
       {
         id: 5,
@@ -90,7 +94,8 @@ Page({
         synopsis: '酸辣口，鸡肉滑嫩，花生米爽脆，大葱也好吃。是一道超级下饭菜',
         main: '鸡胸肉、大葱、油炸花生米、辣椒段',
         material: '盐、生抽、老抽、香醋、糖、姜汁、蒜泥、鸡精、水淀粉、花椒粉、白胡椒、料酒',
-        taste: '酸辣'
+        taste: '酸辣',
+        num: 1
       }
     ],
     houseHis: [
@@ -293,6 +298,7 @@ Page({
     this.setData({
       personnum: e.detail.value
     })
+    app.globalData.personNum = this.data.personnum
   },
 
   //桌号输入
@@ -300,22 +306,82 @@ Page({
     this.setData({
       tablenum: e.detail.value
     })
+    app.globalData.tableNum = this.data.tablenum
   },
 
   //添加菜品
   addOrder(e) {
-    console.log(e.currentTarget.dataset.index)
+    if(app.globalData.selectedContent.length <= 0) {
+      wx.showToast({
+        title: '请先接待顾客',
+        duration: 2000,
+        icon: 'none'
+      })
+      return
+    }
     let index = e.currentTarget.dataset.index
+    let produceItems = this.data.produceItems
+    let id = produceItems[index].id
+    let num = this.data.busCarNum
+    for(let i = 0; i < this.data.addedOrder.length; i++) {
+      if(this.data.addedOrder[i].id == id) {
+        this.data.addedOrder[i].num++
+        console.log(this.data.addedOrder)
+        num = this.data.busCarNum + 1
+        this.setData({
+          busCarNum: num
+        })
+        app.globalData.busCarNum = num
+        return
+      }
+    }
     this.data.addedOrder.push(this.data.produceItems[index])
     console.log(this.data.addedOrder)
-    let num = this.data.busCarNum + 1
+    num = this.data.busCarNum + 1
     this.setData({
       busCarNum: num
     })
+    app.globalData.busCarNum = num
   },
 
   //结算跳转到购物车页面
   balance() {
+    let busCarNum = this.data.busCarNum
+    let addedOrder = this.data.addedOrder
+    if(busCarNum == 0) {
+      console.log('走了')
+      wx.showToast({
+        title: '请添加菜品',
+        duration: 2000,
+        icon: 'none'
+      })
+      return
+    }
+    if(this.data.personnum == '' || this.data.personnum.length == 0) {
+      wx.showToast({
+        title: '请输入人数',
+        duration: 2000,
+        icon: 'none'
+      })
+      return
+    }
+    if(this.data.tablenum == '' || this.data.tablenum.length == 0) {
+      wx.showToast({
+        title: '请输入桌号',
+        duration: 2000,
+        icon: 'none'
+      })
+      return
+    }
+
+    app.globalData.selectedFood = addedOrder
+    app.globalData.personNum = parseInt(this.data.personnum)
+    app.globalData.tableNum = parseInt(this.data.tablenum)
+    
+    console.log(app.globalData.personNum)
+    console.log(app.globalData.tableNum)
+    console.log(app.globalData.selectedFood)
+
     wx.switchTab({
       url: '../buycar/buycar',
     })
@@ -415,10 +481,20 @@ Page({
     let that = this
     let seletedContent = app.globalData.selectedContent
     console.log(seletedContent)
-    if(seletedContent != null && seletedContent.length > 0) {
+    // if(seletedContent != null && seletedContent.length > 0) {
+    //   this.setData({
+    //     clientItems: seletedContent
+    //   })
+    // }
+    this.setData({
+      clientItems: seletedContent
+    })
+    if(this.data.clientItems.length > 0) {
+      app.globalData.personNum = this.data.clientItems.length
       this.setData({
-        clientItems: seletedContent
+        personnum: this.data.clientItems.length
       })
+
     }
     let hasLogin = app.globalData.hasLogin
     if(!hasLogin) {
@@ -426,9 +502,17 @@ Page({
         type: 3
       })
     }else {
+      console.log(app.globalData.personNum)
+      console.log(app.globalData.tableNum)
+      console.log(app.globalData.busCarNum)
       let type = app.globalData.type
+      let personNum = app.globalData.personNum
+      let tableNum = app.globalData.tableNum
       this.setData({
-        type: type
+        type: type,
+        personnum: personNum,
+        tablenum: tableNum,
+        busCarNum: app.globalData.busCarNum
       })
     }
   },
