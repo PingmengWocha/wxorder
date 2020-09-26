@@ -478,7 +478,7 @@ Page({
    */
   onShow: function () {
     let that = this
-    this.data.addedOrder = []
+    this.data.addedOrder = app.globalData.selectedFood
     let seletedContent = app.globalData.selectedContent
     console.log(seletedContent)
     // if(seletedContent != null && seletedContent.length > 0) {
