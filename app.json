@@ -11,7 +11,9 @@
     "pages/produce/ambitus/ambitus",
     "pages/produce/reference/reference",
     "pages/produce/contrast/contrast",
-    "pages/produce/detail/detail"
+    "pages/produce/detail/detail",
+    "pages/my/orders/orders",
+    "pages/my/orderdetail/orderdetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

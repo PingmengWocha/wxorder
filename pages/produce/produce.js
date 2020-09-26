@@ -349,7 +349,6 @@ Page({
     let busCarNum = this.data.busCarNum
     let addedOrder = this.data.addedOrder
     if(busCarNum == 0) {
-      console.log('走了')
       wx.showToast({
         title: '请添加菜品',
         duration: 2000,
@@ -479,6 +478,7 @@ Page({
    */
   onShow: function () {
     let that = this
+    this.data.addedOrder = []
     let seletedContent = app.globalData.selectedContent
     console.log(seletedContent)
     // if(seletedContent != null && seletedContent.length > 0) {

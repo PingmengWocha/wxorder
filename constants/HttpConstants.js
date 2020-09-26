@@ -4,7 +4,7 @@
 // const examineUrl = "https://jszyy.pspress.cn/medicine-quiz/#/bank" //正式服
 
 const apiRootUrl = "http://yeweimf.vicp.net/"
-const imageRootUrl = "http://yeweimf.vicp.net/uploadpath/"
+const imageRootUrl = "http://yeweimf.vicp.net/headimg/"
 
 
 //测试服  
@@ -15,10 +15,14 @@ const imageRootUrl = "http://yeweimf.vicp.net/uploadpath/"
 module.exports = {
   // test: apiRootUrl + 'user/test',
   imageRootUrl,
-  login: apiRootUrl + 'face/clerkLogin',
+  login: apiRootUrl + 'face/clerkLogin', //登录
 
-  indexItem: apiRootUrl + 'face/realTime',
+  indexItem: apiRootUrl + 'face/realTime', //首页
 
-  admit: apiRootUrl + 'face/reception'
+  admit: apiRootUrl + 'face/reception', //接待
+
+  pushOrder: apiRootUrl + 'face/order', //下单
+
+  myOrders: apiRootUrl + 'face/getMyOrder' //我的订单
 
 }

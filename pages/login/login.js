@@ -33,7 +33,7 @@ Page({
     })
   },
 
-  goto() {
+  sureAction(info) {
     let that = this
     // if(this.data.phone != null && this.data.phone.length > 0) {
     //   if(!that.telFun(that.data.phone)){
@@ -65,6 +65,26 @@ Page({
     //   })
     //   return
     // }
+    let code
+    // wx.login({
+    //   success: function(res) {
+    //     code = res.code
+    //     wx.getUserInfo({
+    //       withCredentials: true,
+    //       lang: 'zh_CN',
+    //       success: function(res) {
+    //         let data = {
+    //           code: code,
+    //           encryptedData: res.encryptedData,
+    //           iv: res.iv
+    //         }
+    //       },
+    //       fail: function(res) {},
+    //       complete: function(res) {},
+    //     })
+    //   }
+    // })
+
     if(this.data.account != null && this.data.account.length > 0) {
       console.log(that.data.password.length)
       if(that.data.password == null || that.data.password.length <= 0) {
@@ -85,6 +105,7 @@ Page({
           if(res.code == 200) {
             wx.setStorageSync('userId', res.data.id)
             wx.setStorageSync('hasLogin', 1) //0未登录1已登录
+            wx.setStorageSync('clerkLoginAccount', res.data.clerkLoginAccount)
             if(res.data.industryType === 'sale') {
               app.globalData.type = 1
               wx.setStorageSync('type', 1)

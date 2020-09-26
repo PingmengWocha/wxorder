@@ -1,36 +1,46 @@
 page {
   width: 100%;
   height: 100%;
-}
-
-.root {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
   background-color: #F2F4F5;
 }
 
-.top-info {
-  height: 12%;
+.root {
+  margin-bottom: 30rpx;
+}
+
+.top-info-out {
   width: 100%;
+  padding-top: 20rpx;
+}
+
+.top-info {
+  height: 180rpx;
   display: flex;
   flex-direction: row;
   align-content: center;
-  flex-shrink: 0;
+  background-color: white;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  border-radius: 10rpx;
+  padding-left: 10rpx;
 }
 
 .left-avatar {
-  flex: 1;
+  width: 150rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .avatar {
   width: 100%;
-  height: 100%;
+  height: 150rpx;
+  border-radius: 10rpx;
 }
 
 .right {
-  flex: 3;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -69,42 +79,59 @@ page {
 
 /* 菜的列表 */
 .item-group {
-  height: 60%;
-  width: 100%;
-  padding-top: 2%;
-  padding-bottom: 2%;
-  flex-shrink: 0;
-  overflow: hidden;
+  margin-top: 20rpx;
+  background-color: white;
+  border-radius: 10rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+
+.item-group-title {
+  font-size: 36rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  margin-right: 10rpx;
+  margin-left: 10rpx;
+  border-bottom: 2rpx solid #F2F4F5;
 }
 
 .sitem-group {
   width: 100%;
   height: 100%;
+  margin-top: 10rpx;
 }
 
 .item {
-  border: 2rpx #A3A3A3 solid;
   background-color: white;
   display: flex;
   flex-direction: row;
-  height: 150rpx;
+  height: 180rpx;
   margin-bottom: 10rpx;
+  padding-left: 10rpx;
+  border-top-left-radius: 10rpx;
+  border-bottom-left-radius: 10rpx;
 }
 
 .food-out {
-  flex: 1;
+  width: 180rpx;
   height: 100%;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .food-img {
   width: 100%;
-  height: 100%;
+  height: 140rpx;
+  border-radius: 10rpx;
 }
 
 .right-item {
-  flex: 2;
   display: flex;
   flex-direction: row;
+  background-color: white;
+  width: 100%;
 }
 
 .food-info {
@@ -182,16 +209,21 @@ page {
 
 /* 底部 */
 .bottom {
-  height: 20%;
+  height: 250rpx;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  padding-bottom: 4%;
-  flex-shrink: 0;
+  padding-top: 20rpx;
+  padding-bottom: 100rpx;
+  background-color: white;
+  border-radius: 10rpx;
+  margin-right: 20rpx;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+
 }
 
 .top-bottom {
-  flex: 2;
+  height: 100%;
   display: flex;
   flex-direction: row;
   margin-bottom: 20rpx;
@@ -205,6 +237,7 @@ page {
 
 .left-bottom-text {
   padding-left: 20rpx;
+  color: #494a4b;
 }
 
 .right-bottom {
@@ -256,6 +289,79 @@ page {
   background-color: #1AAD19;
 }
 
+.bus-bottom-content-out {
+  position: fixed;
+  bottom: 10rpx;
+  width: 100%;
+  height: 100rpx;
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.bus-bottom-content {
+  width: 80%;
+  border-radius: 180rpx;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.left-bus-content {
+  flex: 3;
+  background-color: white;
+  border-top-left-radius: 180rpx;
+  border-bottom-left-radius: 180rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.bus-left-image-out {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.bus-left-image {
+  width: 50%;
+  height: 50%;
+}
+
+.bus-left-item {
+  flex: 4;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.bus-title {
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+
+.right-bus-content {
+  flex: 1;
+  background: linear-gradient(#B5CDFD,#6186E4);
+  border-top-right-radius: 180rpx;
+  border-bottom-right-radius: 180rpx;
+}
+
+.right-bus-text {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+}
 
 /* +++++++++++++++++++++++++-----------------------+++++++++++++++++++++++++ */
 /* --------------------------------+++++++++++++++++++++++++++++++++++--------------------------- */

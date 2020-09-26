@@ -73,6 +73,7 @@ page {
 .avatar {
   flex: 3;
   height: 100%;
+  border-radius: 10rpx;
 }
 
 .text {
@@ -182,6 +183,9 @@ page {
 .left-img {
   flex: 1;
   height: 100%;
+  border-top-left-radius: 10rpx;
+  border-bottom-left-radius: 10rpx;
+  margin-left: 5rpx;
 }
 
 .name-out{

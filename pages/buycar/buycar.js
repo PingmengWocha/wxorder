@@ -55,7 +55,6 @@ Page({
       tableNum: num
     })
     app.globalData.tableNum = num
-    console.log(num)
   },
 
   //客数
@@ -65,7 +64,6 @@ Page({
       personNum: num
     })
     app.globalData.personNum = num
-    console.log(num)
   },
 
   //备注
@@ -74,7 +72,6 @@ Page({
     this.setData({
       tipContent: content
     })
-    console.log(content)
   },
 
   //点击下单
@@ -87,34 +84,67 @@ Page({
         duration: 2000
       })
     }
+    
     /**
      * 创建订单，付款....
      */
-    wx.showToast({
-      title: '下单成功',
-      duration: 2000,
-      icon: 'none'
+
+    let orderUser = wx.getStorageSync('clerkLoginAccount')
+    let orderUserId = wx.getStorageSync('userId')
+
+    // this.handleOrder()
+    console.log(this.handleOrder())
+    console.log(this.data.tableNum)
+    console.log(this.data.personNum)
+    console.log(this.data.tipContent)
+
+    let data = {
+      tableNumber: this.data.tableNum,
+      dinersNumber: this.data.personNum,
+      orderDesc: this.data.tipContent,
+      orderUserWX: '233233',
+      orderUserId: 3,
+      orderUser: 'test3',
+      orderUserWX: 1234321,
+      orderInfo: this.handleOrder()
+    }
+    apiUtil.request(api.pushOrder,data).then(res => {
+      if(res.code == 200) {
+        wx.showToast({
+          title: '下单成功',
+          duration: 2000,
+          icon: 'none'
+        })
+        this.setData({
+          avatar: '',
+          orderItems: [],
+          personNum: '',
+          tableNum: '',
+          totalPrice: 0,
+          tipContent: '',
+          selectedContent: [],
+          type: 4
+        })
+        app.globalData.selectedContent = [],
+        app.globalData.selectedFood = [],
+        app.globalData.personNum = '',
+        app.globalData.tableNum = '',
+        app.globalData.busCarNum = 0
+        console.log(app.globalData.selectedContent)
+        console.log(app.globalData.selectedFood)
+        console.log(app.globalData.personNum)
+        console.log(app.globalData.tableNum)
+        console.log(app.globalData.busCarNum)
+      }else {
+        wx.showToast({
+          title: res.msg,
+          duration: 2000,
+          icon: 'none'
+        })
+      }
     })
-    this.setData({
-      avatar: '',
-      orderItems: [],
-      personNum: '',
-      tableNum: '',
-      totalPrice: 0,
-      tipContent: '',
-      selectedContent: [],
-      type: 4
-    })
-    app.globalData.selectedContent = [],
-    app.globalData.selectedFood = [],
-    app.globalData.personNum = '',
-    app.globalData.tableNum = '',
-    app.globalData.busCarNum = 0
-    console.log(app.globalData.selectedContent)
-    console.log(app.globalData.selectedFood)
-    console.log(app.globalData.personNum)
-    console.log(app.globalData.tableNum)
-    console.log(app.globalData.busCarNum)
+
+    
   },
 
   //减菜数量
@@ -163,7 +193,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
   },
 
   /**
@@ -186,7 +215,6 @@ Page({
         avatar: selectedContent[0].image
       })
     }
-    console.log(orderItems)
     if(!hasLogin) {
       this.setData({
         type: 3
@@ -232,24 +260,20 @@ Page({
 
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  //处理菜单数据
+  handleOrder() {
+    let orderItems = this.data.orderItems
+    let handleOrder = []
+    if(orderItems.length == 0) {
+      return
+    }
+    for(let i = 0; i < orderItems.length; i++) {
+      let orderObj = {}
+      orderObj.menuName = orderItems[i].name
+      orderObj.menuNumber = orderItems[i].num
+      orderObj.menuPrice = orderItems[i].price
+      handleOrder.push(orderObj)
+    }
+    return handleOrder
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

@@ -99,6 +99,7 @@ page {
 .avatar {
   height: 100rpx;
   width: 100rpx;
+  border-radius: 10rpx;
 }
 
 .item-time {

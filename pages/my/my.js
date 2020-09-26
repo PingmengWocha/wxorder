@@ -23,6 +23,13 @@ Page({
     })
   },
 
+  //点击获取订单
+  myOrder() {
+    wx.navigateTo({
+      url: './orders/orders',
+    })
+  },
+
 
   //改变密码
   changepassword(e) {

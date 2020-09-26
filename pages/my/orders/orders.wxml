@@ -1,0 +1,31 @@
+<view class="root">
+  <view class="item-out">
+    <block wx:for="{{orderItems}}" wx:for-item="item" wx:key="id" wx:for-index="idx">
+      <view class="item" bindtap="detail" data-item="{{item}}">
+        <view class="item-top">
+          <view class="icon-order-out">
+            <image class="food-top-img" src="/images/my/icon_order_cai.png"></image>
+          </view>
+          <view class="food-out">
+            <view class="food">点餐</view>
+          </view>
+        </view>
+        <view class="item-content-out">
+          <view class="item-content">
+            <view class="item-content-left">
+              <image class="food-img" src="/images/my/icon_order-cai2.png"></image>
+            </view>
+            <view class="item-content-right">
+              <view class="list-content">
+                {{item.orderUser}}
+              </view>
+              <view class="list-content">
+                下单时间：{{item.orderTime}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

@@ -1,25 +1,28 @@
 <view class="root" wx:if="{{type == 0}}">
-  <view class="top-info">
-    <view class="left-avatar">
-      <image class="avatar" src="{{avatar}}" mode="aspectFit widthFix"/>
-    </view>
-    <view class="right">
-      <view class="right-top">
-        <view class="text">桌号</view>
-        <view class="orderinput-out">
-          <input class="orderinput" placeholder-class="porderinput" value="{{tableNum}}" type="number" placeholder="请输入桌号" bindinput="orderTf" maxlength="11"></input>
-        </view>
+  <view class="top-info-out">
+    <view class="top-info">
+      <view class="left-avatar">
+        <image class="avatar" src="{{avatar}}" mode="aspectFit widthFix"/>
       </view>
-      <view class="right-top">
-        <view class="text">客数</view>
-        <view class="orderinput-out">
-          <input class="orderinput" placeholder-class="porderinput" value="{{personNum}}" type="number" placeholder="请输入人数" bindinput="clientTf" maxlength="11"></input>
+      <view class="right">
+        <view class="right-top">
+          <view class="text">桌号</view>
+          <view class="orderinput-out">
+            <input class="orderinput" placeholder-class="porderinput" value="{{tableNum}}" type="number" placeholder="请输入桌号" bindinput="orderTf" maxlength="11"></input>
+          </view>
+        </view>
+        <view class="right-top">
+          <view class="text">客数</view>
+          <view class="orderinput-out">
+            <input class="orderinput" placeholder-class="porderinput" value="{{personNum}}" type="number" placeholder="请输入人数" bindinput="clientTf" maxlength="11"></input>
+          </view>
         </view>
       </view>
     </view>
   </view>
   <view class="item-group">
-    <scroll-view class="sitem-group" scroll-y="{{true}}">
+    <view class="item-group-title">已点菜品</view>
+    <view class="sitem-group">
       <view class="item" wx:for="{{orderItems}}" wx:key="id" wx:for-item="item" wx:for-index="idx">
         <view class="food-out">
           <image class="food-img" src="{{item.url}}" mode="aspectFill widthFix"/>
@@ -42,7 +45,7 @@
           </view>
         </view>
       </view>
-    </scroll-view>
+    </view>
   </view>
   <view class="bottom">
     <view class="top-bottom">
@@ -53,13 +56,32 @@
         <textarea class="textarea" placeholder="有什么特别备注呢" value="{{content}}" bindinput="tipcontent"></textarea>
       </view>
     </view>
-    <view class="bottom-bottom">
+    <!-- <view class="bottom-bottom">
       <view class="total">合计: {{totalPrice}}元</view>
       <view class="btn-out">
         <view class="btn" bindtap="order">下单</view>
       </view>
+    </view> -->
+  </view>
+
+  <!-- 悬浮结算按钮 -->
+  <view class="bus-bottom-content-out">
+    <view class="bus-bottom-content">
+      <view class="left-bus-content">
+        <view class="bus-left-image-out">
+          <image class="bus-left-image" src="../../images/other/dishes.png"/>
+        </view>
+        <view class="bus-left-item">
+          <view class="bus-title">合计:</view>
+          <view class="bus-num">{{totalPrice}} 元</view>
+        </view>
+      </view>
+      <view class="right-bus-content" bindtap="order">
+        <view class="right-bus-text" >下单</view>
+      </view>
     </view>
   </view>
+
 </view>
 
 <!-- 未登录 -->

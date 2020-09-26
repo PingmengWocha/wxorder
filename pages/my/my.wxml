@@ -23,6 +23,16 @@
       </view>
     </view>
 
+    <view class="client" bindtap="myOrder">
+      <view class="client_left">
+        <image class="icon" src="/images/my/icon_myorder.png"></image>
+        <view class="client_text">订单</view>
+      </view>
+      <view class="client_right">
+        <image class="gotoimg" src="/images/my/goto.png"></image>
+      </view>
+    </view>
+
     <view class="info">
       <view class="info_top">
         <image class="icon" src="/images/my/icon_tongji.png"></image>

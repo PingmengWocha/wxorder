@@ -21,7 +21,7 @@
       </view>
     </view>
     <view class="bottm">
-      <view class="btn" bindtap="goto">登录</view>
+      <button class="btn" open-type="getUserInfo" bindgetuserinfo="sureAction">登录</button>
     </view>
   </view>
 </view>

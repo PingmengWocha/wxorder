@@ -1,0 +1,54 @@
+<view class="root">
+  <view class="detail-out">
+    <view class="user-info">
+      <view class="user-left-icon">
+        <image class="user-left-icon-image" src="/images/my/icon_order_top.png"/>
+      </view>
+      <view class="user-right-info">
+        <view class="user-name">{{detailOrder.orderUser}}</view>
+        <view class="user-number">桌号：{{detailOrder.tableNumber}}</view>
+        <view class="user-number">人数：{{detailOrder.dinersNumber}}</view>
+      </view>
+    </view>
+
+    <view class="food-info-out">
+      <view class="top-food-info">
+        菜单详情
+      </view>
+      <view class="food-items">
+        <block wx:for="{{orderInfoList}}" wx:for-item="item" wx:key="infoId">
+          <view class="food-info">
+            <view class="left-image-out">
+              <image class="left-image" src="/images/order/scy.jpg"></image>
+            </view>
+            <view class="right-food-info">
+              <view class="food-name">菜品：{{item.menuName}}</view>
+              <view class="food-num">数量：{{item.menuNumber}}</view>
+              <view class="food-price">单价：{{item.menuPrice}}￥</view>
+            </view>
+          </view>
+        </block>
+      </view>
+      <view class="food-tip-info">
+        <view class="left-food-tip-info">用户要求</view>
+        <scroll-view scroll-y="{{true}}" class="right-food-tip-info">{{detailOrder.orderDesc}}</scroll-view>
+      </view>
+    </view>
+
+    <view class="order-detail">
+      <view class="top-food-info">
+        订单信息
+      </view>
+      <view class="order-info-items">
+        <view class="order-option-out">
+          <view class="options-title">订单编号:</view>
+          <view class="options-info">{{detailOrder.orderNo}}</view>
+        </view>
+        <view class="order-option-out">
+          <view class="options-title">创建时间:</view>
+          <view class="options-info">{{detailOrder.orderTime}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
